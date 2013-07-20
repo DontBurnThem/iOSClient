@@ -26,4 +26,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)login:(id)sender
+{
+    [FBSession openActiveSessionWithAllowLoginUI:YES];
+}
+
 @end

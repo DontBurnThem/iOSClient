@@ -10,4 +10,6 @@
 
 @interface DBTViewController : UIViewController
 
+- (IBAction)login:(id)sender;
+
 @end

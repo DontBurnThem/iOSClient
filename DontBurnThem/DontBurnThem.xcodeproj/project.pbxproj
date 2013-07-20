@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F69ED84A179AAFD700C73DCC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED849179AAFD700C73DCC /* FacebookSDK.framework */; };
+		F69ED84C179AB0FE00C73DCC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED84B179AB0FE00C73DCC /* AdSupport.framework */; };
+		F69ED84E179AB10700C73DCC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED84D179AB10700C73DCC /* Accounts.framework */; };
+		F69ED850179AB10E00C73DCC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED84F179AB10E00C73DCC /* libsqlite3.dylib */; };
+		F69ED852179AB11700C73DCC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED851179AB11700C73DCC /* Security.framework */; };
+		F69ED854179AB11B00C73DCC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED853179AB11B00C73DCC /* Social.framework */; };
+		F69ED857179AB9DE00C73DCC /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F69ED856179AB9DE00C73DCC /* Logo.png */; };
+		F69ED859179AB9E400C73DCC /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F69ED858179AB9E400C73DCC /* Logo@2x.png */; };
 		F6C5EAEB179AA1340048E52A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEA179AA1340048E52A /* UIKit.framework */; };
 		F6C5EAED179AA1340048E52A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEC179AA1340048E52A /* Foundation.framework */; };
 		F6C5EAEF179AA1340048E52A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEE179AA1340048E52A /* CoreGraphics.framework */; };
@@ -21,6 +29,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F69ED849179AAFD700C73DCC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		F69ED84B179AB0FE00C73DCC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		F69ED84D179AB10700C73DCC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		F69ED84F179AB10E00C73DCC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F69ED851179AB11700C73DCC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F69ED853179AB11B00C73DCC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F69ED856179AB9DE00C73DCC /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = SOURCE_ROOT; };
+		F69ED858179AB9E400C73DCC /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = SOURCE_ROOT; };
 		F6C5EAE7179AA1340048E52A /* DontBurnThem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontBurnThem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C5EAEA179AA1340048E52A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F6C5EAEC179AA1340048E52A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,19 +60,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F69ED854179AB11B00C73DCC /* Social.framework in Frameworks */,
+				F69ED852179AB11700C73DCC /* Security.framework in Frameworks */,
+				F69ED850179AB10E00C73DCC /* libsqlite3.dylib in Frameworks */,
+				F69ED84E179AB10700C73DCC /* Accounts.framework in Frameworks */,
+				F69ED84C179AB0FE00C73DCC /* AdSupport.framework in Frameworks */,
 				F6C5EAEB179AA1340048E52A /* UIKit.framework in Frameworks */,
 				F6C5EAED179AA1340048E52A /* Foundation.framework in Frameworks */,
 				F6C5EAEF179AA1340048E52A /* CoreGraphics.framework in Frameworks */,
+				F69ED84A179AAFD700C73DCC /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F69ED855179AB9D100C73DCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F69ED858179AB9E400C73DCC /* Logo@2x.png */,
+				F69ED856179AB9DE00C73DCC /* Logo.png */,
+			);
+			name = Resources;
+			path = DontBurnThem;
+			sourceTree = "<group>";
+		};
 		F6C5EADE179AA1340048E52A = {
 			isa = PBXGroup;
 			children = (
 				F6C5EAF0179AA1340048E52A /* DontBurnThem */,
+				F69ED855179AB9D100C73DCC /* Resources */,
 				F6C5EAE9179AA1340048E52A /* Frameworks */,
 				F6C5EAE8179AA1340048E52A /* Products */,
 			);
@@ -73,6 +106,12 @@
 		F6C5EAE9179AA1340048E52A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F69ED853179AB11B00C73DCC /* Social.framework */,
+				F69ED851179AB11700C73DCC /* Security.framework */,
+				F69ED84F179AB10E00C73DCC /* libsqlite3.dylib */,
+				F69ED84D179AB10700C73DCC /* Accounts.framework */,
+				F69ED84B179AB0FE00C73DCC /* AdSupport.framework */,
+				F69ED849179AAFD700C73DCC /* FacebookSDK.framework */,
 				F6C5EAEA179AA1340048E52A /* UIKit.framework */,
 				F6C5EAEC179AA1340048E52A /* Foundation.framework */,
 				F6C5EAEE179AA1340048E52A /* CoreGraphics.framework */,
@@ -164,6 +203,8 @@
 				F6C5EAFF179AA1340048E52A /* Default@2x.png in Resources */,
 				F6C5EB01179AA1340048E52A /* Default-568h@2x.png in Resources */,
 				F6C5EB04179AA1340048E52A /* MainStoryboard.storyboard in Resources */,
+				F69ED857179AB9DE00C73DCC /* Logo.png in Resources */,
+				F69ED859179AB9E400C73DCC /* Logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +300,10 @@
 		F6C5EB0B179AA1340048E52A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DontBurnThem/DontBurnThem-Prefix.pch";
 				INFOPLIST_FILE = "DontBurnThem/DontBurnThem-Info.plist";
@@ -270,6 +315,10 @@
 		F6C5EB0C179AA1340048E52A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DontBurnThem/DontBurnThem-Prefix.pch";
 				INFOPLIST_FILE = "DontBurnThem/DontBurnThem-Info.plist";
@@ -297,6 +346,7 @@
 				F6C5EB0C179AA1340048E52A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
