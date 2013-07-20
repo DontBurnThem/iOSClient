@@ -7,6 +7,8 @@
 //
 
 #import "DBTMenuController.h"
+#import "DBTOpenLibraryBookInfo.h"
+#import "DBTBookDetailsViewController.h"
 
 @interface DBTMenuController ()
 
@@ -21,6 +23,82 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)readerView:(ZBarReaderView *)readerView didReadSymbols:(ZBarSymbolSet *)symbols fromImage:(UIImage *)image
+{
+    for (ZBarSymbol *symbol in symbols) {
+        
+        // take the code
+        NSString *isbn=[symbol data];
+        
+        isbn=@"0201558025";
+        
+        self.scannedBook=[DBTOpenLibraryBookInfo bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBookInfo requestForISBN:isbn]
+                                                                                            returningResponse:NULL
+                                                                                                        error:NULL]
+                                                                error:NULL];
+        
+        if (self.scannedBook) {
+            [self.barcodeScanner dismissViewControllerAnimated:YES completion:^{
+                [self performSegueWithIdentifier:@"BookDetails" sender:self];
+            }];
+        } else {
+            UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Failure"
+                                                       message:@"Unable to get book details."
+                                                      delegate:nil
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles: nil];
+            
+            [[av autorelease] show];
+        }
+        
+        return;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"BookDetails"]) {
+        [(DBTBookDetailsViewController *)segue.destinationViewController setBookInfo:self.scannedBook];
+    }
+}
+
+- (void)openScanner:(id)sender
+{
+#warning edit this
+#if false
+    if (!self.barcodeScanner) {
+        self.barcodeScanner=[[ZBarReaderViewController new] autorelease];
+        [self.barcodeScanner setShowsZBarControls:YES];
+        [self.barcodeScanner.readerView setReaderDelegate:self];
+    }
+    
+    [self presentViewController:self.barcodeScanner
+                       animated:YES
+                     completion:NULL];
+#else
+    // take the code
+    NSString *isbn=@"0201558025";
+    
+    self.scannedBook=[DBTOpenLibraryBookInfo bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBookInfo requestForISBN:isbn]
+                                                                                        returningResponse:NULL
+                                                                                                    error:NULL]
+                                                            error:NULL];
+    
+    if (!self.scannedBook) {
+        UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Failure"
+                                                   message:@"Unable to get book details."
+                                                  delegate:nil
+                                         cancelButtonTitle:@"Ok"
+                                         otherButtonTitles: nil];
+        
+        [[av autorelease] show];
+    } else {
+        [self performSegueWithIdentifier:@"BookDetails" sender:self];
+    }
+
+#endif
 }
 
 - (void)viewDidLoad
@@ -55,21 +133,6 @@
     }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.destinationViewController isKindOfClass:[ZBarReaderViewController class]]) {
-        [(ZBarReaderViewController *)segue.destinationViewController setReaderDelegate:self];
-    }
-}
-
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    // get the result
-    for (ZBarSymbol *symbol in [info objectForKey: ZBarReaderControllerResults]) {
-        NSLog(@"%@ (type %d)", symbol.data, symbol.type);
-    }
-}
 
 - (void)setGUIEnabled:(BOOL)val
 {

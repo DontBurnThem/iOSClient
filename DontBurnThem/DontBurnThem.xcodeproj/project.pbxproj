@@ -26,6 +26,7 @@
 		F69ED8A7179ABB8700C73DCC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED8A6179ABB8700C73DCC /* QuartzCore.framework */; };
 		F69ED8A9179ABB8D00C73DCC /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED8A8179ABB8D00C73DCC /* libiconv.dylib */; };
 		F69ED8AC179ABDDF00C73DCC /* DBTMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */; };
+		F69ED8AF179AD81100C73DCC /* DBTOpenLibraryBookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBookInfo.m */; };
 		F6C5EAEB179AA1340048E52A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEA179AA1340048E52A /* UIKit.framework */; };
 		F6C5EAED179AA1340048E52A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEC179AA1340048E52A /* Foundation.framework */; };
 		F6C5EAEF179AA1340048E52A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEE179AA1340048E52A /* CoreGraphics.framework */; };
@@ -36,6 +37,15 @@
 		F6C5EAFF179AA1340048E52A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EAFE179AA1340048E52A /* Default@2x.png */; };
 		F6C5EB01179AA1340048E52A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EB00179AA1340048E52A /* Default-568h@2x.png */; };
 		F6C5EB04179AA1340048E52A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */; };
+		F6FDE039179B03FC006498D0 /* DBTBookDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE038179B03FC006498D0 /* DBTBookDetailsViewController.m */; };
+		F6FDE03C179B1B58006498D0 /* DBTImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03B179B1B58006498D0 /* DBTImageCell.m */; };
+		F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */; };
+		F6FDE042179B2073006498D0 /* EmptyImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F6FDE040179B2073006498D0 /* EmptyImage.png */; };
+		F6FDE043179B2073006498D0 /* EmptyImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6FDE041179B2073006498D0 /* EmptyImage@2x.png */; };
+		F6FDE046179B279A006498D0 /* DBTMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE045179B279A006498D0 /* DBTMapCell.m */; };
+		F6FDE049179B27B9006498D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FDE047179B27B3006498D0 /* CoreLocation.framework */; };
+		F6FDE04B179B27EF006498D0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FDE04A179B27EF006498D0 /* MapKit.framework */; };
+		F6FDE04E179B2A9C006498D0 /* DBTButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +89,8 @@
 		F69ED8A8179ABB8D00C73DCC /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		F69ED8AA179ABDDF00C73DCC /* DBTMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTMenuController.h; sourceTree = "<group>"; };
 		F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTMenuController.m; sourceTree = "<group>"; };
+		F69ED8AD179AD81100C73DCC /* DBTOpenLibraryBookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTOpenLibraryBookInfo.h; sourceTree = "<group>"; };
+		F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTOpenLibraryBookInfo.m; sourceTree = "<group>"; };
 		F6C5EAE7179AA1340048E52A /* DontBurnThem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontBurnThem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C5EAEA179AA1340048E52A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F6C5EAEC179AA1340048E52A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,6 +105,21 @@
 		F6C5EAFE179AA1340048E52A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F6C5EB00179AA1340048E52A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F6C5EB03179AA1340048E52A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		F6FDE037179B03FC006498D0 /* DBTBookDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTBookDetailsViewController.h; sourceTree = "<group>"; };
+		F6FDE038179B03FC006498D0 /* DBTBookDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTBookDetailsViewController.m; sourceTree = "<group>"; };
+		F6FDE03A179B1B58006498D0 /* DBTImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTImageCell.h; sourceTree = "<group>"; };
+		F6FDE03B179B1B58006498D0 /* DBTImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTImageCell.m; sourceTree = "<group>"; };
+		F6FDE03D179B1C20006498D0 /* UITableView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Utils.h"; sourceTree = "<group>"; };
+		F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Utils.m"; sourceTree = "<group>"; };
+		F6FDE040179B2073006498D0 /* EmptyImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmptyImage.png; sourceTree = "<group>"; };
+		F6FDE041179B2073006498D0 /* EmptyImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EmptyImage@2x.png"; sourceTree = "<group>"; };
+		F6FDE044179B279A006498D0 /* DBTMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTMapCell.h; sourceTree = "<group>"; };
+		F6FDE045179B279A006498D0 /* DBTMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTMapCell.m; sourceTree = "<group>"; };
+		F6FDE047179B27B3006498D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F6FDE04A179B27EF006498D0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F6FDE04C179B2A9C006498D0 /* DBTButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTButtonCell.h; sourceTree = "<group>"; };
+		F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTButtonCell.m; sourceTree = "<group>"; };
+		F6FDE052179B32ED006498D0 /* DBTButtonCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTButtonCellDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +127,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FDE04B179B27EF006498D0 /* MapKit.framework in Frameworks */,
 				F69ED8A9179ABB8D00C73DCC /* libiconv.dylib in Frameworks */,
 				F69ED8A7179ABB8700C73DCC /* QuartzCore.framework in Frameworks */,
 				F69ED8A5179ABB8000C73DCC /* CoreVideo.framework in Frameworks */,
 				F69ED8A3179ABB7A00C73DCC /* CoreMedia.framework in Frameworks */,
 				F69ED8A1179ABB7600C73DCC /* AVFoundation.framework in Frameworks */,
 				F69ED854179AB11B00C73DCC /* Social.framework in Frameworks */,
+				F6FDE049179B27B9006498D0 /* CoreLocation.framework in Frameworks */,
 				F69ED852179AB11700C73DCC /* Security.framework in Frameworks */,
 				F69ED850179AB10E00C73DCC /* libsqlite3.dylib in Frameworks */,
 				F69ED84E179AB10700C73DCC /* Accounts.framework in Frameworks */,
@@ -124,6 +153,8 @@
 		F69ED855179AB9D100C73DCC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F6FDE040179B2073006498D0 /* EmptyImage.png */,
+				F6FDE041179B2073006498D0 /* EmptyImage@2x.png */,
 				F69ED858179AB9E400C73DCC /* Logo@2x.png */,
 				F69ED856179AB9DE00C73DCC /* Logo.png */,
 			);
@@ -217,7 +248,9 @@
 		F6C5EAE9179AA1340048E52A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6FDE04A179B27EF006498D0 /* MapKit.framework */,
 				F69ED8A8179ABB8D00C73DCC /* libiconv.dylib */,
+				F6FDE047179B27B3006498D0 /* CoreLocation.framework */,
 				F69ED8A6179ABB8700C73DCC /* QuartzCore.framework */,
 				F69ED8A4179ABB8000C73DCC /* CoreVideo.framework */,
 				F69ED8A2179ABB7A00C73DCC /* CoreMedia.framework */,
@@ -241,9 +274,22 @@
 				F6C5EAF9179AA1340048E52A /* DBTAppDelegate.h */,
 				F6C5EAFA179AA1340048E52A /* DBTAppDelegate.m */,
 				F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */,
+				F6FDE03D179B1C20006498D0 /* UITableView+Utils.h */,
+				F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */,
 				F69ED8AA179ABDDF00C73DCC /* DBTMenuController.h */,
 				F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */,
 				F6C5EAF1179AA1340048E52A /* Supporting Files */,
+				F69ED8AD179AD81100C73DCC /* DBTOpenLibraryBookInfo.h */,
+				F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBookInfo.m */,
+				F6FDE037179B03FC006498D0 /* DBTBookDetailsViewController.h */,
+				F6FDE038179B03FC006498D0 /* DBTBookDetailsViewController.m */,
+				F6FDE03A179B1B58006498D0 /* DBTImageCell.h */,
+				F6FDE03B179B1B58006498D0 /* DBTImageCell.m */,
+				F6FDE044179B279A006498D0 /* DBTMapCell.h */,
+				F6FDE045179B279A006498D0 /* DBTMapCell.m */,
+				F6FDE04C179B2A9C006498D0 /* DBTButtonCell.h */,
+				F6FDE052179B32ED006498D0 /* DBTButtonCellDelegate.h */,
+				F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */,
 			);
 			path = DontBurnThem;
 			sourceTree = "<group>";
@@ -325,6 +371,8 @@
 				F69ED89D179ABB5300C73DCC /* zbar-help.html in Resources */,
 				F69ED89E179ABB5300C73DCC /* zbar-helpicons.png in Resources */,
 				F69ED89F179ABB5300C73DCC /* zbar-samples.png in Resources */,
+				F6FDE042179B2073006498D0 /* EmptyImage.png in Resources */,
+				F6FDE043179B2073006498D0 /* EmptyImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +386,12 @@
 				F6C5EAF7179AA1340048E52A /* main.m in Sources */,
 				F6C5EAFB179AA1340048E52A /* DBTAppDelegate.m in Sources */,
 				F69ED8AC179ABDDF00C73DCC /* DBTMenuController.m in Sources */,
+				F69ED8AF179AD81100C73DCC /* DBTOpenLibraryBookInfo.m in Sources */,
+				F6FDE039179B03FC006498D0 /* DBTBookDetailsViewController.m in Sources */,
+				F6FDE03C179B1B58006498D0 /* DBTImageCell.m in Sources */,
+				F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */,
+				F6FDE046179B279A006498D0 /* DBTMapCell.m in Sources */,
+				F6FDE04E179B2A9C006498D0 /* DBTButtonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 #import "DBTAppDelegate.h"
 
+#import "DBTOpenLibraryBookInfo.h"
+
 @implementation DBTAppDelegate
 
 - (void)dealloc
@@ -20,7 +22,10 @@
 {
     // Override point for customization after application launch.
     return YES;
+
 }
+
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
 
-@class ZBarReaderViewController;
+@class DBTOpenLibraryBookInfo;
 
-@interface DBTMenuController : UIViewController <ZBarReaderDelegate>
+@interface DBTMenuController : UIViewController <ZBarReaderViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *scanButton;
+@property (nonatomic, retain) ZBarReaderViewController *barcodeScanner;
+@property (nonatomic, retain) DBTOpenLibraryBookInfo *scannedBook;
 
 - (void)setGUIEnabled:(BOOL)val;
+- (IBAction)openScanner:(id)sender;
 
 @end
