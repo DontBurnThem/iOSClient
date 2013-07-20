@@ -29,6 +29,13 @@
     return [output autorelease];
 }
 
++ (DBTOpenLibraryBookInfo *)fetchBookWithISBN:(NSString *)isbn
+{
+    return [DBTOpenLibraryBookInfo bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBookInfo requestForISBN:isbn]
+                                                                              returningResponse:NULL
+                                                                                          error:NULL]
+                                                  error:NULL];
+}
 
 + (id)bookInfoWithJSONData:(NSData *)json error:(NSError **)error
 {

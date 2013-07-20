@@ -11,6 +11,7 @@
 #import "DBTMapCell.h"
 #import "DBTImageCell.h"
 #import "DBTButtonCell.h"
+#import "DBTTextCell.h"
 
 @interface DBTBookDetailsViewController () {
     UIActionSheet *bookStatesActionSheet;
@@ -142,10 +143,23 @@
                                                      andClass:[DBTMapCell class]];
             break;
         case 4:
-            cell=[tableView dequeueOrCreateCellWithIdentifier:@"ComboCell"
-                                                     andClass:[UITableViewCell class]];
-            self.bookStateCell=cell;
-            [cell.textLabel setText:[self.bookStates objectAtIndex:self.currentBookState]];
+            switch (indexPath.row) {
+                case 0:
+                    cell=[tableView dequeueOrCreateCellWithIdentifier:@"ComboCell"
+                                                             andClass:[UITableViewCell class]];
+                    self.bookStateCell=cell;
+                    [cell.textLabel setText:[self.bookStates objectAtIndex:self.currentBookState]];
+                    break;
+                case 1:
+                    cell=[tableView dequeueOrCreateCellWithIdentifier:@"PriceCell"
+                                                             andClass:[DBTTextCell class]];
+
+                    [[(DBTTextCell *)cell textField] setDelegate:self];
+                    [[(DBTTextCell *)cell textField] setText:[NSString stringWithFormat:@"%0.2f", self.currentBookPrice]];
+                    
+                default:
+                    break;
+            }
             
             break;
         case 5:
@@ -161,6 +175,11 @@
     return cell;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [[NSScanner scannerWithString:[textField text]] scanFloat:&_currentBookPrice];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
@@ -173,7 +192,7 @@
         case 3:
             return 1;
         case 4:
-            return 1;
+            return 2;
         case 5:
             return 1;
             
@@ -211,7 +230,7 @@
             return @"Your position";
             break;
         case 4:
-            return @"Book status";
+            return @"Book state";
         case 5:
             return nil;
             

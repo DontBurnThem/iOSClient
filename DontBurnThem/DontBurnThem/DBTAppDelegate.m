@@ -7,8 +7,9 @@
 //
 
 #import "DBTAppDelegate.h"
-
+#import "DBTOpenLibraryBookInfo.h"
 #import "DBTServer.h"
+#import "DBTOffer.h"
 
 @implementation DBTAppDelegate
 
@@ -22,6 +23,10 @@
 {
     DBTServer *server=[DBTServer server];
     
+    DBTOpenLibraryBookInfo *book=[DBTOpenLibraryBookInfo fetchBookWithISBN:@"0961641576"];
+    DBTOffer *offer=[DBTOffer offerWithBook:book withPrice:10.0 andState:2];
+    
+    [server insertOffer:offer error:NULL];
     
     // Override point for customization after application launch.
     return YES;

@@ -47,6 +47,8 @@
 		F6FDE04B179B27EF006498D0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FDE04A179B27EF006498D0 /* MapKit.framework */; };
 		F6FDE04E179B2A9C006498D0 /* DBTButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */; };
 		F6FDE056179B34DB006498D0 /* DBTServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE055179B34DB006498D0 /* DBTServer.m */; };
+		F6FDE059179B4CCA006498D0 /* DBTTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE058179B4CCA006498D0 /* DBTTextCell.m */; };
+		F6FDE05C179B569E006498D0 /* DBTOffer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE05B179B569E006498D0 /* DBTOffer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +125,10 @@
 		F6FDE052179B32ED006498D0 /* DBTButtonCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTButtonCellDelegate.h; sourceTree = "<group>"; };
 		F6FDE054179B34DB006498D0 /* DBTServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTServer.h; sourceTree = "<group>"; };
 		F6FDE055179B34DB006498D0 /* DBTServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTServer.m; sourceTree = "<group>"; };
+		F6FDE057179B4CCA006498D0 /* DBTTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTTextCell.h; sourceTree = "<group>"; };
+		F6FDE058179B4CCA006498D0 /* DBTTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTTextCell.m; sourceTree = "<group>"; };
+		F6FDE05A179B569E006498D0 /* DBTOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTOffer.h; sourceTree = "<group>"; };
+		F6FDE05B179B569E006498D0 /* DBTOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTOffer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +300,10 @@
 				F6FDE04C179B2A9C006498D0 /* DBTButtonCell.h */,
 				F6FDE052179B32ED006498D0 /* DBTButtonCellDelegate.h */,
 				F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */,
+				F6FDE057179B4CCA006498D0 /* DBTTextCell.h */,
+				F6FDE058179B4CCA006498D0 /* DBTTextCell.m */,
+				F6FDE05A179B569E006498D0 /* DBTOffer.h */,
+				F6FDE05B179B569E006498D0 /* DBTOffer.m */,
 			);
 			path = DontBurnThem;
 			sourceTree = "<group>";
@@ -406,6 +416,8 @@
 				F6FDE046179B279A006498D0 /* DBTMapCell.m in Sources */,
 				F6FDE04E179B2A9C006498D0 /* DBTButtonCell.m in Sources */,
 				F6FDE056179B34DB006498D0 /* DBTServer.m in Sources */,
+				F6FDE059179B4CCA006498D0 /* DBTTextCell.m in Sources */,
+				F6FDE05C179B569E006498D0 /* DBTOffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

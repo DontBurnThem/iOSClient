@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBTOpenLibraryBookInfo;
+@class DBTOpenLibraryBookInfo,DBTOffer;
 
 @interface DBTServer : NSObject
 + (NSString *)address;
 + (DBTServer *)server;
 
-- (BOOL)containsBook:(NSString *)isbn error:(NSError **)err;
-- (void)insertBook:(DBTOpenLibraryBookInfo *)book;
+@property (nonatomic, readonly) NSString *userRef;
+
+- (NSString *)makeBookRef:(DBTOpenLibraryBookInfo *)book;
+
+- (BOOL)containsBook:(DBTOpenLibraryBookInfo *)book error:(NSError **)err;
+- (BOOL)insertBook:(DBTOpenLibraryBookInfo *)book error:(NSError **)err;
+- (BOOL)insertOffer:(DBTOffer *)offer error:(NSError **)err;
 @end
