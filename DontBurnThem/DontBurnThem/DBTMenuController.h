@@ -14,9 +14,7 @@
 @interface DBTMenuController : UIViewController <ZBarReaderDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *scanButton;
-@property (nonatomic, retain) ZBarReaderViewController *barcodeScanner;
 
 - (void)setGUIEnabled:(BOOL)val;
-- (IBAction)runBarcodeScanner:(id)sender;
 
 @end

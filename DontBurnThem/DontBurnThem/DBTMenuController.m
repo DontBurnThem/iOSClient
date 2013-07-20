@@ -55,18 +55,13 @@
     }
 }
 
-- (void)runBarcodeScanner:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (!self.barcodeScanner) {
-        self.barcodeScanner=[[ZBarReaderViewController new] autorelease];
+    if ([segue.destinationViewController isKindOfClass:[ZBarReaderViewController class]]) {
+        [(ZBarReaderViewController *)segue.destinationViewController setReaderDelegate:self];
     }
-    
-    [self.barcodeScanner setReaderDelegate:self];
-    
-    [self presentViewController:self.barcodeScanner
-                       animated:YES
-                     completion:NULL];
 }
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -74,9 +69,6 @@
     for (ZBarSymbol *symbol in [info objectForKey: ZBarReaderControllerResults]) {
         NSLog(@"%@ (type %d)", symbol.data, symbol.type);
     }
-    
-    
-    [self.barcodeScanner dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)setGUIEnabled:(BOOL)val
