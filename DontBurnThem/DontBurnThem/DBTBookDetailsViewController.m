@@ -24,7 +24,7 @@
 - (void)setupPrivateVariables
 {
     _bookStates=[@[@"Mint",
-                 @"Read",
+                 @"Open",
                  @"Used",
                  @"Written",
                  @"Damaged",

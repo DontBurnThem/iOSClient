@@ -8,7 +8,7 @@
 
 #import "DBTAppDelegate.h"
 
-#import "DBTOpenLibraryBookInfo.h"
+#import "DBTServer.h"
 
 @implementation DBTAppDelegate
 
@@ -20,6 +20,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    DBTServer *server=[DBTServer server];
+    
+    
     // Override point for customization after application launch.
     return YES;
 

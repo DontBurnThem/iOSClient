@@ -46,6 +46,7 @@
 		F6FDE049179B27B9006498D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FDE047179B27B3006498D0 /* CoreLocation.framework */; };
 		F6FDE04B179B27EF006498D0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6FDE04A179B27EF006498D0 /* MapKit.framework */; };
 		F6FDE04E179B2A9C006498D0 /* DBTButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */; };
+		F6FDE056179B34DB006498D0 /* DBTServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE055179B34DB006498D0 /* DBTServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,8 @@
 		F6FDE04C179B2A9C006498D0 /* DBTButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTButtonCell.h; sourceTree = "<group>"; };
 		F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTButtonCell.m; sourceTree = "<group>"; };
 		F6FDE052179B32ED006498D0 /* DBTButtonCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTButtonCellDelegate.h; sourceTree = "<group>"; };
+		F6FDE054179B34DB006498D0 /* DBTServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTServer.h; sourceTree = "<group>"; };
+		F6FDE055179B34DB006498D0 /* DBTServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTServer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +274,7 @@
 		F6C5EAF0179AA1340048E52A /* DontBurnThem */ = {
 			isa = PBXGroup;
 			children = (
+				F6FDE053179B349B006498D0 /* REST */,
 				F6C5EAF9179AA1340048E52A /* DBTAppDelegate.h */,
 				F6C5EAFA179AA1340048E52A /* DBTAppDelegate.m */,
 				F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */,
@@ -306,6 +310,15 @@
 				F6C5EB00179AA1340048E52A /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F6FDE053179B349B006498D0 /* REST */ = {
+			isa = PBXGroup;
+			children = (
+				F6FDE054179B34DB006498D0 /* DBTServer.h */,
+				F6FDE055179B34DB006498D0 /* DBTServer.m */,
+			);
+			name = REST;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +405,7 @@
 				F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */,
 				F6FDE046179B279A006498D0 /* DBTMapCell.m in Sources */,
 				F6FDE04E179B2A9C006498D0 /* DBTButtonCell.m in Sources */,
+				F6FDE056179B34DB006498D0 /* DBTServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
