@@ -38,6 +38,7 @@
 		F6C5EB01179AA1340048E52A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EB00179AA1340048E52A /* Default-568h@2x.png */; };
 		F6C5EB04179AA1340048E52A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */; };
 		F6F9CC46179B6BEA004A492A /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F9CC45179B6BEA004A492A /* UIViewController+Utils.m */; };
+		F6F9CC49179B752B004A492A /* DBTPagedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F9CC48179B752B004A492A /* DBTPagedScrollView.m */; };
 		F6FDE039179B03FC006498D0 /* DBTMakeOfferController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE038179B03FC006498D0 /* DBTMakeOfferController.m */; };
 		F6FDE03C179B1B58006498D0 /* DBTImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03B179B1B58006498D0 /* DBTImageCell.m */; };
 		F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */; };
@@ -111,6 +112,8 @@
 		F6C5EB03179AA1340048E52A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F6F9CC44179B6BEA004A492A /* UIViewController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utils.h"; sourceTree = "<group>"; };
 		F6F9CC45179B6BEA004A492A /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utils.m"; sourceTree = "<group>"; };
+		F6F9CC47179B752B004A492A /* DBTPagedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBTPagedScrollView.h; path = DontBurnThem/DBTPagedScrollView.h; sourceTree = "<group>"; };
+		F6F9CC48179B752B004A492A /* DBTPagedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBTPagedScrollView.m; path = DontBurnThem/DBTPagedScrollView.m; sourceTree = "<group>"; };
 		F6FDE037179B03FC006498D0 /* DBTMakeOfferController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTMakeOfferController.h; sourceTree = "<group>"; };
 		F6FDE038179B03FC006498D0 /* DBTMakeOfferController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTMakeOfferController.m; sourceTree = "<group>"; };
 		F6FDE03A179B1B58006498D0 /* DBTImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTImageCell.h; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 		F6C5EADE179AA1340048E52A = {
 			isa = PBXGroup;
 			children = (
+				F6F9CC47179B752B004A492A /* DBTPagedScrollView.h */,
+				F6F9CC48179B752B004A492A /* DBTPagedScrollView.m */,
 				F6C5EAF0179AA1340048E52A /* DontBurnThem */,
 				F69ED855179AB9D100C73DCC /* Resources */,
 				F69ED87D179ABB5300C73DCC /* ZBarSDK */,
@@ -432,6 +437,7 @@
 				F6FDE059179B4CCA006498D0 /* DBTTextCell.m in Sources */,
 				F6FDE05C179B569E006498D0 /* DBTOffer.m in Sources */,
 				F6F9CC46179B6BEA004A492A /* UIViewController+Utils.m in Sources */,
+				F6F9CC49179B752B004A492A /* DBTPagedScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

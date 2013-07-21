@@ -14,6 +14,7 @@
 @interface DBTMenuController : UIViewController <ZBarReaderViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *scanButton;
+@property (nonatomic, retain) IBOutlet UIButton *searchButton;
 @property (nonatomic, retain) ZBarReaderViewController *barcodeScanner;
 @property (nonatomic, retain) DBTOpenLibraryBook *scannedBook;
 

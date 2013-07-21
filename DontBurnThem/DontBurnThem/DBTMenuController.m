@@ -137,6 +137,7 @@
 - (void)setGUIEnabled:(BOOL)val
 {
     [self.scanButton setEnabled:val];
+    [self.searchButton setEnabled:val];
 }
 
 - (void)didReceiveMemoryWarning
