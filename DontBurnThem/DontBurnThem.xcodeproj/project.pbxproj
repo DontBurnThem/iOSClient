@@ -37,7 +37,7 @@
 		F6C5EAFF179AA1340048E52A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EAFE179AA1340048E52A /* Default@2x.png */; };
 		F6C5EB01179AA1340048E52A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EB00179AA1340048E52A /* Default-568h@2x.png */; };
 		F6C5EB04179AA1340048E52A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */; };
-		F6FDE039179B03FC006498D0 /* DBTBookDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE038179B03FC006498D0 /* DBTBookDetailsViewController.m */; };
+		F6FDE039179B03FC006498D0 /* DBTMakeOfferController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE038179B03FC006498D0 /* DBTMakeOfferController.m */; };
 		F6FDE03C179B1B58006498D0 /* DBTImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03B179B1B58006498D0 /* DBTImageCell.m */; };
 		F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */; };
 		F6FDE042179B2073006498D0 /* EmptyImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F6FDE040179B2073006498D0 /* EmptyImage.png */; };
@@ -108,8 +108,8 @@
 		F6C5EAFE179AA1340048E52A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F6C5EB00179AA1340048E52A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F6C5EB03179AA1340048E52A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		F6FDE037179B03FC006498D0 /* DBTBookDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTBookDetailsViewController.h; sourceTree = "<group>"; };
-		F6FDE038179B03FC006498D0 /* DBTBookDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTBookDetailsViewController.m; sourceTree = "<group>"; };
+		F6FDE037179B03FC006498D0 /* DBTMakeOfferController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTMakeOfferController.h; sourceTree = "<group>"; };
+		F6FDE038179B03FC006498D0 /* DBTMakeOfferController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTMakeOfferController.m; sourceTree = "<group>"; };
 		F6FDE03A179B1B58006498D0 /* DBTImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTImageCell.h; sourceTree = "<group>"; };
 		F6FDE03B179B1B58006498D0 /* DBTImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTImageCell.m; sourceTree = "<group>"; };
 		F6FDE03D179B1C20006498D0 /* UITableView+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Utils.h"; sourceTree = "<group>"; };
@@ -288,8 +288,8 @@
 				F69ED8AA179ABDDF00C73DCC /* DBTMenuController.h */,
 				F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */,
 				F6C5EAF1179AA1340048E52A /* Supporting Files */,
-				F6FDE037179B03FC006498D0 /* DBTBookDetailsViewController.h */,
-				F6FDE038179B03FC006498D0 /* DBTBookDetailsViewController.m */,
+				F6FDE037179B03FC006498D0 /* DBTMakeOfferController.h */,
+				F6FDE038179B03FC006498D0 /* DBTMakeOfferController.m */,
 			);
 			path = DontBurnThem;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 				F6C5EAFB179AA1340048E52A /* DBTAppDelegate.m in Sources */,
 				F69ED8AC179ABDDF00C73DCC /* DBTMenuController.m in Sources */,
 				F69ED8AF179AD81100C73DCC /* DBTOpenLibraryBook.m in Sources */,
-				F6FDE039179B03FC006498D0 /* DBTBookDetailsViewController.m in Sources */,
+				F6FDE039179B03FC006498D0 /* DBTMakeOfferController.m in Sources */,
 				F6FDE03C179B1B58006498D0 /* DBTImageCell.m in Sources */,
 				F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */,
 				F6FDE046179B279A006498D0 /* DBTMapCell.m in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Pietro Saccardi. All rights reserved.
 //
 
-#import "DBTBookDetailsViewController.h"
+#import "DBTMakeOfferController.h"
 #import "DBTOpenLibraryBook.h"
 #import "DBTMapCell.h"
 #import "DBTOffer.h"
@@ -14,7 +14,7 @@
 #import "DBTButtonCell.h"
 #import "DBTTextCell.h"
 
-@interface DBTBookDetailsViewController () {
+@interface DBTMakeOfferController () {
     UIActionSheet *bookStatesActionSheet;
 }
 @property (nonatomic, retain) UITableViewCell *stateCell;
@@ -25,7 +25,7 @@
 - (DBTOffer *)makeAnOffer;
 @end
 
-@implementation DBTBookDetailsViewController
+@implementation DBTMakeOfferController
 
 - (void)setupPrivateVariables
 {
@@ -161,7 +161,7 @@
                 case 1:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"PriceCell"
                                                              andClass:[DBTTextCell class]];
-                    self.priceCell=cell;
+                    self.priceCell=(DBTTextCell *)cell;
                     [[(DBTTextCell *)cell textField] setDelegate:self];
                     [[(DBTTextCell *)cell textField] setText:[NSString stringWithFormat:@"%0.2f", self.price]];
                     
@@ -241,6 +241,7 @@
 
 - (void)buttonCellWasClicked:(DBTButtonCell *)cell
 {
+#warning edit here
     [self.priceCell.textField endEditing:NO];
     
     [bookStatesActionSheet showInView:self.view];

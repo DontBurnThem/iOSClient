@@ -10,7 +10,7 @@
 #import "DBTButtonCellDelegate.h"
 @class DBTOpenLibraryBook;
 
-@interface DBTBookDetailsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, DBTButtonCellDelegate, UITextFieldDelegate>
+@interface DBTMakeOfferController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, DBTButtonCellDelegate, UITextFieldDelegate>
 @property (nonatomic, retain) DBTOpenLibraryBook *book;
 @property (nonatomic, readonly) NSArray *bookStates;
 @property (nonatomic, readonly) NSInteger state;

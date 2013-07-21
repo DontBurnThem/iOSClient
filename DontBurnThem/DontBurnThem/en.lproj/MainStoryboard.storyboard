@@ -51,7 +51,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wd3-FI-X9I" firstAttribute="top" secondItem="cqB-0Q-Va5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0DB-AA-jy7"/>
                             <constraint firstAttribute="trailing" secondItem="cqB-0Q-Va5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="AZO-ac-1OG"/>
@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="139" y="82"/>
         </scene>
-        <!--Book Details View Controller-->
+        <!--Make Offer Controller-->
         <scene sceneID="UeM-8r-wef">
             <objects>
-                <tableViewController id="yyA-QE-azL" customClass="DBTBookDetailsViewController" sceneMemberID="viewController">
+                <tableViewController id="yyA-QE-azL" customClass="DBTMakeOfferController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="il3-uh-sK2">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -266,9 +266,6 @@
         <image name="Logo.png" width="320" height="201"/>
     </resources>
     <classes>
-        <class className="DBTBookDetailsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTBookDetailsViewController.h"/>
-        </class>
         <class className="DBTButtonCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTButtonCell.h"/>
             <relationships>
