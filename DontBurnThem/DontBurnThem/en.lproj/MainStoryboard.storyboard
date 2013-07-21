@@ -120,6 +120,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="delegate" destination="yyA-QE-azL" id="V8A-Yh-hAE"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ComboCell" textLabel="qOi-Gk-HWX" detailTextLabel="sp7-Uk-bUe" style="IBUITableViewCellStyleValue1" id="DP6-Ze-2n8" customClass="DBTButtonCell">
                                 <rect key="frame" x="0.0" y="268" width="320" height="44"/>
@@ -274,6 +277,9 @@
         </class>
         <class className="DBTImageCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTImageCell.h"/>
+        </class>
+        <class className="DBTMakeOfferController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTMakeOfferController.h"/>
         </class>
         <class className="DBTMapCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTMapCell.h"/>

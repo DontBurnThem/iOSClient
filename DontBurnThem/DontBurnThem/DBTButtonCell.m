@@ -9,6 +9,15 @@
 #import "DBTButtonCell.h"
 
 @implementation DBTButtonCell
+
+- (void)setEnabled:(BOOL)enabled
+{
+    [self setUserInteractionEnabled:enabled];
+    [self.textLabel setEnabled:enabled];
+    _enabled=enabled;
+}
+
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self setSelected:YES];

@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class DBTServer;
+
 @interface DBTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, readonly) DBTServer *server;
 
 @end

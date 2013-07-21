@@ -9,6 +9,7 @@
 #import "DBTServer.h"
 #import "DBTOpenLibraryBook.h"
 #import "DBTOffer.h"
+#import "DBTAppDelegate.h"
 
 @interface DBTServer ()
 
@@ -22,7 +23,7 @@
 
 + (DBTServer *)server
 {
-    return [[[DBTServer alloc] init] autorelease];
+    return [(DBTAppDelegate *)[UIApplication sharedApplication].delegate server];
 }
 
 + (NSString *)address

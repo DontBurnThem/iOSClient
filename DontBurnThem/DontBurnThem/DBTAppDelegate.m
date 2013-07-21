@@ -21,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _server=[[DBTServer alloc] init];
 /*    DBTServer *server=[DBTServer server];
     
     DBTOpenLibraryBook *book=[DBTOpenLibraryBook fetchBookWithISBN:@"0961641576"];
@@ -60,6 +61,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [_server release];
 }
 
 @end

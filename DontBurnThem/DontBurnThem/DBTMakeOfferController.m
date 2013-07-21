@@ -241,10 +241,21 @@
 
 - (void)buttonCellWasClicked:(DBTButtonCell *)cell
 {
-#warning edit here
     [self.priceCell.textField endEditing:NO];
-    
-    [bookStatesActionSheet showInView:self.view];
+
+    switch ([self.tableView indexPathForCell:cell].section) {
+        case 4:
+            [bookStatesActionSheet showInView:self.view];
+            break;
+        
+        case 5:
+            [cell setEnabled:NO];
+            
+            break;
+             
+        default:
+            break;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

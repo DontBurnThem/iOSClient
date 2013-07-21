@@ -18,4 +18,7 @@
 
 - (id)initOfferWithBook:(DBTOpenLibraryBook *)book withPrice:(CGFloat)price andState:(NSUInteger)state;
 + (DBTOffer *)offerWithBook:(DBTOpenLibraryBook *)book withPrice:(CGFloat)price andState:(NSUInteger)state;
+
+- (void)pushAsynchronouslyToServer:(void (^)(BOOL, NSError *))cbk;
+- (BOOL)pushSynchronouslyToServerError:(NSError **)err;
 @end

@@ -11,4 +11,5 @@
 
 @interface DBTButtonCell : UITableViewCell
 @property (nonatomic, assign) IBOutlet id <DBTButtonCellDelegate> delegate;
+@property (nonatomic, assign, getter=isEnabled) BOOL enabled;
 @end
