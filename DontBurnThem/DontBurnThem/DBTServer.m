@@ -15,7 +15,7 @@
 
 + (NSURLRequest *)buildGetRequestAPI:(NSString *)api;
 + (NSURLRequest *)buildPostRequestAPI:(NSString *)api fields:(NSDictionary *)dict;
-+ (NSString *)urlEncodeDictionary:(NSDictionary *)dict;
++ (NSURLRequest *)buildGetRequestAPI:(NSString *)api fields:(NSDictionary *)dict;
 
 @end
 
@@ -41,25 +41,6 @@
     return req;
 }
 
-+ (NSString *)urlEncodeDictionary:(NSDictionary *)dict
-{
-    NSMutableArray *items=[[NSMutableArray alloc] initWithCapacity:dict.count];
-    
-    for (NSString *key in [dict allKeys]) {
-        [items addObject:[NSString stringWithFormat:@"%@=%@",
-                          [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                          [[dict objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-                          ]
-         ];
-    }
-    
-    NSString *output=[items componentsJoinedByString:@"&"];
-    
-    [items release];
-    
-    return output;
-}
-
 - (NSString *)userRef
 {
 #warning change this
@@ -71,12 +52,22 @@
     return [NSString stringWithFormat:@"%@/api/books/%@/", [DBTServer address], book.ISBN];
 }
 
++ (NSURLRequest *)buildGetRequestAPI:(NSString *)api fields:(NSDictionary *)dict
+{
+    NSMutableURLRequest *req=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/api/%@?%@", [DBTServer address], api, [dict stringWithURLEncoding]]]];
+    
+    [req setHTTPMethod:@"GET"];
+    [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    return req;
+}
+
 + (NSURLRequest *)buildPostRequestAPI:(NSString *)api fields:(NSDictionary *)dict
 {
     NSMutableURLRequest *req=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/api/%@/", [DBTServer address], api]]];
     
     [req setHTTPMethod:@"POST"];
-    [req setHTTPBody:[[DBTServer urlEncodeDictionary:dict] dataUsingEncoding:NSUTF8StringEncoding]];
+    [req setHTTPBody:[[dict stringWithURLEncoding] dataUsingEncoding:NSUTF8StringEncoding]];
     [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
@@ -100,6 +91,33 @@
                           returningResponse:&resp
                                       error:err];
     return ([(NSHTTPURLResponse *)resp statusCode]==201);
+}
+
+- (NSArray *)lookForOffersHere:(CLLocationCoordinate2D)pt radius:(CGFloat)km optionalISBN:(NSString *)isbn error:(NSError **)err
+{
+    NSDictionary *fields=(isbn ?
+                          @{
+                          @"radius": [NSString stringWithFormat:@"%f", km],
+                          @"ll": [NSString stringWithFormat:@"%f,%f", pt.latitude, pt.longitude],
+                          @"isbn": isbn
+                          }
+                          :
+                          @{
+                          @"radius": [NSString stringWithFormat:@"%f", km],
+                          @"ll": [NSString stringWithFormat:@"%f,%f", pt.latitude, pt.longitude]
+                          }
+                          );
+    
+    NSURLRequest *req=[DBTServer buildGetRequestAPI:@"offers/search"
+                                             fields: fields];
+    
+    NSData *result=[NSURLConnection sendSynchronousRequest:req
+                                         returningResponse:NULL
+                                                     error:err];
+    
+    if (!result) return nil;
+    
+    // now parse results
 }
 
 - (BOOL)containsBook:(DBTOpenLibraryBook *)book error:(NSError **)err

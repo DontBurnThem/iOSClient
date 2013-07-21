@@ -15,5 +15,6 @@
     #import "ZBarSDK.h"
     #import "UITableView+Utils.h"
     #import "UIViewController+Utils.h"
+    #import "NSDictionary+Utils.h"
     #import <MapKit/MapKit.h>
 #endif

@@ -39,6 +39,8 @@
 		F6C5EB04179AA1340048E52A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */; };
 		F6F9CC46179B6BEA004A492A /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F9CC45179B6BEA004A492A /* UIViewController+Utils.m */; };
 		F6F9CC49179B752B004A492A /* DBTPagedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F9CC48179B752B004A492A /* DBTPagedScrollView.m */; };
+		F6F9CC4C179B9B0F004A492A /* DBTSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F9CC4B179B9B0F004A492A /* DBTSearchController.m */; };
+		F6F9CC4F179BA13F004A492A /* NSDictionary+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F9CC4E179BA13F004A492A /* NSDictionary+Utils.m */; };
 		F6FDE039179B03FC006498D0 /* DBTMakeOfferController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE038179B03FC006498D0 /* DBTMakeOfferController.m */; };
 		F6FDE03C179B1B58006498D0 /* DBTImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03B179B1B58006498D0 /* DBTImageCell.m */; };
 		F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */; };
@@ -114,6 +116,10 @@
 		F6F9CC45179B6BEA004A492A /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utils.m"; sourceTree = "<group>"; };
 		F6F9CC47179B752B004A492A /* DBTPagedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBTPagedScrollView.h; path = DontBurnThem/DBTPagedScrollView.h; sourceTree = "<group>"; };
 		F6F9CC48179B752B004A492A /* DBTPagedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBTPagedScrollView.m; path = DontBurnThem/DBTPagedScrollView.m; sourceTree = "<group>"; };
+		F6F9CC4A179B9B0F004A492A /* DBTSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTSearchController.h; sourceTree = "<group>"; };
+		F6F9CC4B179B9B0F004A492A /* DBTSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTSearchController.m; sourceTree = "<group>"; };
+		F6F9CC4D179BA13F004A492A /* NSDictionary+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Utils.h"; sourceTree = "<group>"; };
+		F6F9CC4E179BA13F004A492A /* NSDictionary+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utils.m"; sourceTree = "<group>"; };
 		F6FDE037179B03FC006498D0 /* DBTMakeOfferController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTMakeOfferController.h; sourceTree = "<group>"; };
 		F6FDE038179B03FC006498D0 /* DBTMakeOfferController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTMakeOfferController.m; sourceTree = "<group>"; };
 		F6FDE03A179B1B58006498D0 /* DBTImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTImageCell.h; sourceTree = "<group>"; };
@@ -293,6 +299,8 @@
 				F6C5EAF9179AA1340048E52A /* DBTAppDelegate.h */,
 				F6C5EAFA179AA1340048E52A /* DBTAppDelegate.m */,
 				F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */,
+				F6F9CC4A179B9B0F004A492A /* DBTSearchController.h */,
+				F6F9CC4B179B9B0F004A492A /* DBTSearchController.m */,
 				F69ED8AA179ABDDF00C73DCC /* DBTMenuController.h */,
 				F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */,
 				F6FDE037179B03FC006498D0 /* DBTMakeOfferController.h */,
@@ -316,6 +324,8 @@
 				F6C5EAFC179AA1340048E52A /* Default.png */,
 				F6C5EAFE179AA1340048E52A /* Default@2x.png */,
 				F6C5EB00179AA1340048E52A /* Default-568h@2x.png */,
+				F6F9CC4D179BA13F004A492A /* NSDictionary+Utils.h */,
+				F6F9CC4E179BA13F004A492A /* NSDictionary+Utils.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -438,6 +448,8 @@
 				F6FDE05C179B569E006498D0 /* DBTOffer.m in Sources */,
 				F6F9CC46179B6BEA004A492A /* UIViewController+Utils.m in Sources */,
 				F6F9CC49179B752B004A492A /* DBTPagedScrollView.m in Sources */,
+				F6F9CC4C179B9B0F004A492A /* DBTSearchController.m in Sources */,
+				F6F9CC4F179BA13F004A492A /* NSDictionary+Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

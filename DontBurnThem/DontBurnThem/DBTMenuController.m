@@ -24,7 +24,7 @@
     }
     return self;
 }
-
+/*
 - (void)readerView:(ZBarReaderView *)readerView didReadSymbols:(ZBarSymbolSet *)symbols fromImage:(UIImage *)image
 {
     for (ZBarSymbol *symbol in symbols) {
@@ -55,7 +55,7 @@
         
         return;
     }
-}
+}*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -81,10 +81,7 @@
     // take the code
     NSString *isbn=@"1558600868";
     
-    self.scannedBook=[DBTOpenLibraryBook bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBook requestForISBN:isbn]
-                                                                                        returningResponse:NULL
-                                                                                                    error:NULL]
-                                                            error:NULL];
+    self.scannedBook=[DBTOpenLibraryBook fetchBookWithISBN:isbn];
     
     if (!self.scannedBook) {
         UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Failure"

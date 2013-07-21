@@ -47,7 +47,8 @@
     BOOL contains=[server containsBook:self.book error:&myErr];
     
     if (myErr!=nil) {
-        *err=myErr;
+        if (err!=NULL)
+            *err=myErr;
         
         return NO;
     }

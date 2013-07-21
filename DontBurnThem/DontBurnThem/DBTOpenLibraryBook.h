@@ -17,10 +17,9 @@
 @property (nonatomic, copy) NSArray *publishers;
 @property (nonatomic, copy) NSURL *imageURL;
 
-+ (DBTOpenLibraryBook *)bookInfoWithJSONData:(NSData *)json error:(NSError **)error;
-
-+ (NSURLRequest *)requestForISBN:(NSString *)isbn;
-
 + (DBTOpenLibraryBook *)fetchBookWithISBN:(NSString *)isbn;
++ (DBTOpenLibraryBook *)fetchBookWithOLID:(NSString *)olid;
++ (NSArray *)fetchBooksWithISBNs:(NSArray *)isbns;
++ (NSArray *)fetchSearchResultsWithFields:(NSDictionary *)keys;
 
 @end

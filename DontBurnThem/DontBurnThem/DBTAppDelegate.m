@@ -22,12 +22,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     _server=[[DBTServer alloc] init];
-/*    DBTServer *server=[DBTServer server];
     
-    DBTOpenLibraryBook *book=[DBTOpenLibraryBook fetchBookWithISBN:@"0961641576"];
-    DBTOffer *offer=[DBTOffer offerWithBook:book withPrice:10.0 andState:2];
+//    [DBTOpenLibraryBook fetchSearchResultsWithFields:@{@"title": @"algorithms"}];
     
-    [server insertOffer:offer error:NULL];*/
+//    DBTOpenLibraryBook *book=[DBTOpenLibraryBook fetchBookWithISBN:@"0961641576"];
+//    DBTOffer *offer=[DBTOffer offerWithBook:book withPrice:10.0 andState:2];
+//    
+//    [_server insertOffer:offer error:NULL];
     
     // Override point for customization after application launch.
     return YES;

@@ -21,4 +21,5 @@
 - (BOOL)containsBook:(DBTOpenLibraryBook *)book error:(NSError **)err;
 - (BOOL)insertBook:(DBTOpenLibraryBook *)book error:(NSError **)err;
 - (BOOL)insertOffer:(DBTOffer *)offer error:(NSError **)err;
+- (NSArray *)lookForOffersHere:(CLLocationCoordinate2D)pt radius:(CGFloat)km optionalISBN:(NSString *)isbn error:(NSError **)err;
 @end
