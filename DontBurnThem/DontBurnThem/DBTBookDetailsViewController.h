@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DBTButtonCellDelegate.h"
-@class DBTOpenLibraryBookInfo;
+@class DBTOpenLibraryBook;
 
 @interface DBTBookDetailsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, DBTButtonCellDelegate, UITextFieldDelegate>
-@property (nonatomic, retain) DBTOpenLibraryBookInfo *bookInfo;
+@property (nonatomic, retain) DBTOpenLibraryBook *book;
 @property (nonatomic, readonly) NSArray *bookStates;
-@property (nonatomic, readonly) NSInteger currentBookState;
-@property (nonatomic, readonly) CGFloat currentBookPrice;
+@property (nonatomic, readonly) NSInteger state;
+@property (nonatomic, readonly) CGFloat price;
+@property (nonatomic, readonly) CLLocationCoordinate2D location;
+
 @end

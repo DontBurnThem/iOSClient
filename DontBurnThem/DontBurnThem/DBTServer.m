@@ -7,7 +7,7 @@
 //
 
 #import "DBTServer.h"
-#import "DBTOpenLibraryBookInfo.h"
+#import "DBTOpenLibraryBook.h"
 #import "DBTOffer.h"
 
 @interface DBTServer ()
@@ -65,9 +65,9 @@
     return [NSString stringWithFormat:@"%@/api/users/1/", [DBTServer address]];
 }
 
-- (NSString *)makeBookRef:(DBTOpenLibraryBookInfo *)book
+- (NSString *)makeBookRef:(DBTOpenLibraryBook *)book
 {
-    return [NSString stringWithFormat:@"%@/api/books/isbn/%@/", [DBTServer address], book.ISBN];
+    return [NSString stringWithFormat:@"%@/api/books/%@/", [DBTServer address], book.ISBN];
 }
 
 + (NSURLRequest *)buildPostRequestAPI:(NSString *)api fields:(NSDictionary *)dict
@@ -90,8 +90,8 @@
                        @"price": [NSString stringWithFormat:@"%0.2f", offer.price],
                        @"user": [self userRef],
                        @"book": [self makeBookRef:offer.book],
-                       @"lat": [NSString stringWithFormat:@"%f",offer.geolocation.y],
-                       @"lon": [NSString stringWithFormat:@"%f",offer.geolocation.x]
+                       @"lat": [NSString stringWithFormat:@"%f",offer.location.latitude],
+                       @"lon": [NSString stringWithFormat:@"%f",offer.location.longitude]
                        }];
     
     NSURLResponse *resp=nil;
@@ -101,7 +101,7 @@
     return ([(NSHTTPURLResponse *)resp statusCode]==201);
 }
 
-- (BOOL)containsBook:(DBTOpenLibraryBookInfo *)book error:(NSError **)err
+- (BOOL)containsBook:(DBTOpenLibraryBook *)book error:(NSError **)err
 {
     NSURLResponse *resp=nil;
     [NSURLConnection sendSynchronousRequest:[DBTServer buildGetRequestAPI:[@"books/" stringByAppendingString:book.ISBN]]
@@ -114,7 +114,7 @@
 }
 
 
-- (BOOL)insertBook:(DBTOpenLibraryBookInfo *)book error:(NSError **)err
+- (BOOL)insertBook:(DBTOpenLibraryBook *)book error:(NSError **)err
 {
     NSURLRequest *req=[DBTServer buildPostRequestAPI:@"books" fields:@{@"isbn": book.ISBN}];
     

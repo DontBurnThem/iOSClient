@@ -26,7 +26,7 @@
 		F69ED8A7179ABB8700C73DCC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED8A6179ABB8700C73DCC /* QuartzCore.framework */; };
 		F69ED8A9179ABB8D00C73DCC /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED8A8179ABB8D00C73DCC /* libiconv.dylib */; };
 		F69ED8AC179ABDDF00C73DCC /* DBTMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */; };
-		F69ED8AF179AD81100C73DCC /* DBTOpenLibraryBookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBookInfo.m */; };
+		F69ED8AF179AD81100C73DCC /* DBTOpenLibraryBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBook.m */; };
 		F6C5EAEB179AA1340048E52A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEA179AA1340048E52A /* UIKit.framework */; };
 		F6C5EAED179AA1340048E52A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEC179AA1340048E52A /* Foundation.framework */; };
 		F6C5EAEF179AA1340048E52A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5EAEE179AA1340048E52A /* CoreGraphics.framework */; };
@@ -92,8 +92,8 @@
 		F69ED8A8179ABB8D00C73DCC /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		F69ED8AA179ABDDF00C73DCC /* DBTMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTMenuController.h; sourceTree = "<group>"; };
 		F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTMenuController.m; sourceTree = "<group>"; };
-		F69ED8AD179AD81100C73DCC /* DBTOpenLibraryBookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTOpenLibraryBookInfo.h; sourceTree = "<group>"; };
-		F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTOpenLibraryBookInfo.m; sourceTree = "<group>"; };
+		F69ED8AD179AD81100C73DCC /* DBTOpenLibraryBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTOpenLibraryBook.h; sourceTree = "<group>"; };
+		F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTOpenLibraryBook.m; sourceTree = "<group>"; };
 		F6C5EAE7179AA1340048E52A /* DontBurnThem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontBurnThem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C5EAEA179AA1340048E52A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F6C5EAEC179AA1340048E52A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -280,30 +280,16 @@
 		F6C5EAF0179AA1340048E52A /* DontBurnThem */ = {
 			isa = PBXGroup;
 			children = (
+				F6FDE05D179B5CC3006498D0 /* TableViewCells */,
 				F6FDE053179B349B006498D0 /* REST */,
 				F6C5EAF9179AA1340048E52A /* DBTAppDelegate.h */,
 				F6C5EAFA179AA1340048E52A /* DBTAppDelegate.m */,
 				F6C5EB02179AA1340048E52A /* MainStoryboard.storyboard */,
-				F6FDE03D179B1C20006498D0 /* UITableView+Utils.h */,
-				F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */,
 				F69ED8AA179ABDDF00C73DCC /* DBTMenuController.h */,
 				F69ED8AB179ABDDF00C73DCC /* DBTMenuController.m */,
 				F6C5EAF1179AA1340048E52A /* Supporting Files */,
-				F69ED8AD179AD81100C73DCC /* DBTOpenLibraryBookInfo.h */,
-				F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBookInfo.m */,
 				F6FDE037179B03FC006498D0 /* DBTBookDetailsViewController.h */,
 				F6FDE038179B03FC006498D0 /* DBTBookDetailsViewController.m */,
-				F6FDE03A179B1B58006498D0 /* DBTImageCell.h */,
-				F6FDE03B179B1B58006498D0 /* DBTImageCell.m */,
-				F6FDE044179B279A006498D0 /* DBTMapCell.h */,
-				F6FDE045179B279A006498D0 /* DBTMapCell.m */,
-				F6FDE04C179B2A9C006498D0 /* DBTButtonCell.h */,
-				F6FDE052179B32ED006498D0 /* DBTButtonCellDelegate.h */,
-				F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */,
-				F6FDE057179B4CCA006498D0 /* DBTTextCell.h */,
-				F6FDE058179B4CCA006498D0 /* DBTTextCell.m */,
-				F6FDE05A179B569E006498D0 /* DBTOffer.h */,
-				F6FDE05B179B569E006498D0 /* DBTOffer.m */,
 			);
 			path = DontBurnThem;
 			sourceTree = "<group>";
@@ -311,6 +297,8 @@
 		F6C5EAF1179AA1340048E52A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F6FDE03D179B1C20006498D0 /* UITableView+Utils.h */,
+				F6FDE03E179B1C20006498D0 /* UITableView+Utils.m */,
 				F6C5EAF2179AA1340048E52A /* DontBurnThem-Info.plist */,
 				F6C5EAF3179AA1340048E52A /* InfoPlist.strings */,
 				F6C5EAF6179AA1340048E52A /* main.m */,
@@ -325,10 +313,30 @@
 		F6FDE053179B349B006498D0 /* REST */ = {
 			isa = PBXGroup;
 			children = (
+				F69ED8AD179AD81100C73DCC /* DBTOpenLibraryBook.h */,
+				F69ED8AE179AD81100C73DCC /* DBTOpenLibraryBook.m */,
+				F6FDE05A179B569E006498D0 /* DBTOffer.h */,
+				F6FDE05B179B569E006498D0 /* DBTOffer.m */,
 				F6FDE054179B34DB006498D0 /* DBTServer.h */,
 				F6FDE055179B34DB006498D0 /* DBTServer.m */,
 			);
 			name = REST;
+			sourceTree = "<group>";
+		};
+		F6FDE05D179B5CC3006498D0 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F6FDE03A179B1B58006498D0 /* DBTImageCell.h */,
+				F6FDE03B179B1B58006498D0 /* DBTImageCell.m */,
+				F6FDE044179B279A006498D0 /* DBTMapCell.h */,
+				F6FDE045179B279A006498D0 /* DBTMapCell.m */,
+				F6FDE04C179B2A9C006498D0 /* DBTButtonCell.h */,
+				F6FDE052179B32ED006498D0 /* DBTButtonCellDelegate.h */,
+				F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */,
+				F6FDE057179B4CCA006498D0 /* DBTTextCell.h */,
+				F6FDE058179B4CCA006498D0 /* DBTTextCell.m */,
+			);
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,7 +417,7 @@
 				F6C5EAF7179AA1340048E52A /* main.m in Sources */,
 				F6C5EAFB179AA1340048E52A /* DBTAppDelegate.m in Sources */,
 				F69ED8AC179ABDDF00C73DCC /* DBTMenuController.m in Sources */,
-				F69ED8AF179AD81100C73DCC /* DBTOpenLibraryBookInfo.m in Sources */,
+				F69ED8AF179AD81100C73DCC /* DBTOpenLibraryBook.m in Sources */,
 				F6FDE039179B03FC006498D0 /* DBTBookDetailsViewController.m in Sources */,
 				F6FDE03C179B1B58006498D0 /* DBTImageCell.m in Sources */,
 				F6FDE03F179B1C20006498D0 /* UITableView+Utils.m in Sources */,

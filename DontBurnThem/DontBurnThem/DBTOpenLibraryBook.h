@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DBTOpenLibraryBookInfo : NSObject <UITableViewDataSource>
+@interface DBTOpenLibraryBook : NSObject <UITableViewDataSource>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
@@ -17,10 +17,10 @@
 @property (nonatomic, copy) NSArray *publishers;
 @property (nonatomic, copy) NSURL *imageURL;
 
-+ (DBTOpenLibraryBookInfo *)bookInfoWithJSONData:(NSData *)json error:(NSError **)error;
++ (DBTOpenLibraryBook *)bookInfoWithJSONData:(NSData *)json error:(NSError **)error;
 
 + (NSURLRequest *)requestForISBN:(NSString *)isbn;
 
-+ (DBTOpenLibraryBookInfo *)fetchBookWithISBN:(NSString *)isbn;
++ (DBTOpenLibraryBook *)fetchBookWithISBN:(NSString *)isbn;
 
 @end

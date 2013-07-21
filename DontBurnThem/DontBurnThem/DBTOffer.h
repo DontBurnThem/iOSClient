@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBTOpenLibraryBookInfo;
+@class DBTOpenLibraryBook;
 
 @interface DBTOffer : NSObject
-@property (nonatomic, retain) DBTOpenLibraryBookInfo *book;
+@property (nonatomic, retain) DBTOpenLibraryBook *book;
 @property (nonatomic, assign) CGFloat price;
 @property (nonatomic, assign) NSUInteger state;
-@property (nonatomic, assign) CGPoint geolocation;
+@property (nonatomic, assign) CLLocationCoordinate2D location;
 
-- (id)initOfferWithBook:(DBTOpenLibraryBookInfo *)book withPrice:(CGFloat)price andState:(NSUInteger)state;
-+ (DBTOffer *)offerWithBook:(DBTOpenLibraryBookInfo *)book withPrice:(CGFloat)price andState:(NSUInteger)state;
+- (id)initOfferWithBook:(DBTOpenLibraryBook *)book withPrice:(CGFloat)price andState:(NSUInteger)state;
++ (DBTOffer *)offerWithBook:(DBTOpenLibraryBook *)book withPrice:(CGFloat)price andState:(NSUInteger)state;
 @end

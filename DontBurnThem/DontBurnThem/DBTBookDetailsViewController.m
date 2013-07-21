@@ -7,8 +7,9 @@
 //
 
 #import "DBTBookDetailsViewController.h"
-#import "DBTOpenLibraryBookInfo.h"
+#import "DBTOpenLibraryBook.h"
 #import "DBTMapCell.h"
+#import "DBTOffer.h"
 #import "DBTImageCell.h"
 #import "DBTButtonCell.h"
 #import "DBTTextCell.h"
@@ -16,8 +17,12 @@
 @interface DBTBookDetailsViewController () {
     UIActionSheet *bookStatesActionSheet;
 }
-@property (nonatomic, retain) UITableViewCell *bookStateCell;
+@property (nonatomic, retain) UITableViewCell *stateCell;
+@property (nonatomic, retain) DBTMapCell *mapCell;
+@property (nonatomic, retain) DBTTextCell *priceCell;
 - (void)setupPrivateVariables;
+
+- (DBTOffer *)makeAnOffer;
 @end
 
 @implementation DBTBookDetailsViewController
@@ -44,7 +49,9 @@
 - (void)dealloc
 {
     [_bookStates release];
-    self.bookStateCell=nil;
+    self.stateCell=nil;
+    self.mapCell=nil;
+    self.priceCell=nil;
     [bookStatesActionSheet release];
     
     [super dealloc];
@@ -111,14 +118,14 @@
                 case 0:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"TitleCell"
                                                              andClass:[UITableViewCell class]];
-                    [cell.textLabel setText:self.bookInfo.title];
-                    [cell.detailTextLabel setText:self.bookInfo.subtitle];
+                    [cell.textLabel setText:self.book.title];
+                    [cell.detailTextLabel setText:self.book.subtitle];
                     break;
                     
                 case 1:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"ImageCell"
                                                              andClass:[DBTImageCell class]];
-                    [(DBTImageCell *)cell setImageURL:self.bookInfo.imageURL];
+                    [(DBTImageCell *)cell setImageURL:self.book.imageURL];
                     
                 default:
                     break;
@@ -129,33 +136,34 @@
             
             cell=[tableView dequeueOrCreateCellWithIdentifier:@"TextCell"
                                                      andClass:[UITableViewCell class]];
-            [cell.textLabel setText:[self.bookInfo.authors objectAtIndex:indexPath.row]];
+            [cell.textLabel setText:[self.book.authors objectAtIndex:indexPath.row]];
             break;
             
         case 2:
             cell=[tableView dequeueOrCreateCellWithIdentifier:@"TextCell"
                                                      andClass:[UITableViewCell class]];
-            [cell.textLabel setText:[self.bookInfo.publishers objectAtIndex:indexPath.row]];
+            [cell.textLabel setText:[self.book.publishers objectAtIndex:indexPath.row]];
             
             break;
         case 3:
             cell=[tableView dequeueOrCreateCellWithIdentifier:@"MapCell"
                                                      andClass:[DBTMapCell class]];
+            self.mapCell=(DBTMapCell *)cell;
             break;
         case 4:
             switch (indexPath.row) {
                 case 0:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"ComboCell"
                                                              andClass:[UITableViewCell class]];
-                    self.bookStateCell=cell;
-                    [cell.textLabel setText:[self.bookStates objectAtIndex:self.currentBookState]];
+                    self.stateCell=cell;
+                    [cell.detailTextLabel setText:[self.bookStates objectAtIndex:self.state]];
                     break;
                 case 1:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"PriceCell"
                                                              andClass:[DBTTextCell class]];
-
+                    self.priceCell=cell;
                     [[(DBTTextCell *)cell textField] setDelegate:self];
-                    [[(DBTTextCell *)cell textField] setText:[NSString stringWithFormat:@"%0.2f", self.currentBookPrice]];
+                    [[(DBTTextCell *)cell textField] setText:[NSString stringWithFormat:@"%0.2f", self.price]];
                     
                 default:
                     break;
@@ -175,10 +183,32 @@
     return cell;
 }
 
+- (CLLocationCoordinate2D)location
+{
+    return self.mapCell.mapView.userLocation.location.coordinate;
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [[NSScanner scannerWithString:[textField text]] scanFloat:&_currentBookPrice];
+    [[NSScanner scannerWithString:[textField text]] scanFloat:&_price];
 }
+
+- (DBTOffer *)makeAnOffer
+{
+    DBTOffer *offer=[DBTOffer offerWithBook:self.book
+                                  withPrice:self.price
+                                   andState:self.state];
+    
+    offer.location=self.location;
+    
+    return offer;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.priceCell.textField endEditing:NO];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -186,9 +216,9 @@
         case 0:
             return 2;
         case 1:
-            return self.bookInfo.authors.count;
+            return self.book.authors.count;
         case 2:
-            return self.bookInfo.publishers.count;
+            return self.book.publishers.count;
         case 3:
             return 1;
         case 4:
@@ -205,12 +235,14 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     // set the value
-    _currentBookState=buttonIndex;
-    [self.bookStateCell.textLabel setText:[self.bookStates objectAtIndex:buttonIndex]];
+    _state=buttonIndex;
+    [self.stateCell.detailTextLabel setText:[self.bookStates objectAtIndex:buttonIndex]];
 }
 
 - (void)buttonCellWasClicked:(DBTButtonCell *)cell
 {
+    [self.priceCell.textField endEditing:NO];
+    
     [bookStatesActionSheet showInView:self.view];
 }
 
@@ -230,7 +262,7 @@
             return @"Your position";
             break;
         case 4:
-            return @"Book state";
+            return @"Offer info";
         case 5:
             return nil;
             
@@ -240,10 +272,10 @@
     }
 }
 
-- (void)setBookInfo:(DBTOpenLibraryBookInfo *)bookInfo
+- (void)setBook:(DBTOpenLibraryBook *)book
 {
-    [_bookInfo autorelease];
-    _bookInfo=[bookInfo retain];
+    [_book autorelease];
+    _book=[book retain];
     
     [self.tableView reloadData];
 }

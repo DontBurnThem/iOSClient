@@ -7,7 +7,7 @@
 //
 
 #import "DBTMenuController.h"
-#import "DBTOpenLibraryBookInfo.h"
+#import "DBTOpenLibraryBook.h"
 #import "DBTBookDetailsViewController.h"
 
 @interface DBTMenuController ()
@@ -34,7 +34,7 @@
         
         isbn=@"0201558025";
         
-        self.scannedBook=[DBTOpenLibraryBookInfo bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBookInfo requestForISBN:isbn]
+        self.scannedBook=[DBTOpenLibraryBook bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBook requestForISBN:isbn]
                                                                                             returningResponse:NULL
                                                                                                         error:NULL]
                                                                 error:NULL];
@@ -60,7 +60,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"BookDetails"]) {
-        [(DBTBookDetailsViewController *)segue.destinationViewController setBookInfo:self.scannedBook];
+        [(DBTBookDetailsViewController *)segue.destinationViewController setBook:self.scannedBook];
     }
 }
 
@@ -81,7 +81,7 @@
     // take the code
     NSString *isbn=@"0201558025";
     
-    self.scannedBook=[DBTOpenLibraryBookInfo bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBookInfo requestForISBN:isbn]
+    self.scannedBook=[DBTOpenLibraryBook bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBook requestForISBN:isbn]
                                                                                         returningResponse:NULL
                                                                                                     error:NULL]
                                                             error:NULL];

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class DBTOpenLibraryBookInfo,DBTOffer;
+@class DBTOpenLibraryBook,DBTOffer;
 
 @interface DBTServer : NSObject
 + (NSString *)address;
@@ -16,9 +16,9 @@
 
 @property (nonatomic, readonly) NSString *userRef;
 
-- (NSString *)makeBookRef:(DBTOpenLibraryBookInfo *)book;
+- (NSString *)makeBookRef:(DBTOpenLibraryBook *)book;
 
-- (BOOL)containsBook:(DBTOpenLibraryBookInfo *)book error:(NSError **)err;
-- (BOOL)insertBook:(DBTOpenLibraryBookInfo *)book error:(NSError **)err;
+- (BOOL)containsBook:(DBTOpenLibraryBook *)book error:(NSError **)err;
+- (BOOL)insertBook:(DBTOpenLibraryBook *)book error:(NSError **)err;
 - (BOOL)insertOffer:(DBTOffer *)offer error:(NSError **)err;
 @end

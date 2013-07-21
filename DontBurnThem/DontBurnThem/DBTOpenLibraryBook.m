@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Pietro Saccardi. All rights reserved.
 //
 
-#import "DBTOpenLibraryBookInfo.h"
+#import "DBTOpenLibraryBook.h"
 
-@interface DBTOpenLibraryBookInfo ()
+@interface DBTOpenLibraryBook ()
 
 + (NSArray *)arrayByFlattening:(NSArray *)array usingKey:(NSString *)key;
 
 @end
 
-@implementation DBTOpenLibraryBookInfo
+@implementation DBTOpenLibraryBook
 
 + (NSArray *)arrayByFlattening:(NSArray *)array usingKey:(NSString *)key
 {
@@ -29,9 +29,9 @@
     return [output autorelease];
 }
 
-+ (DBTOpenLibraryBookInfo *)fetchBookWithISBN:(NSString *)isbn
++ (DBTOpenLibraryBook *)fetchBookWithISBN:(NSString *)isbn
 {
-    return [DBTOpenLibraryBookInfo bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBookInfo requestForISBN:isbn]
+    return [DBTOpenLibraryBook bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBook requestForISBN:isbn]
                                                                               returningResponse:NULL
                                                                                           error:NULL]
                                                   error:NULL];
@@ -78,7 +78,7 @@
     dict=(NSDictionary *)obj;
     
     // try to parse
-    DBTOpenLibraryBookInfo *info=[[DBTOpenLibraryBookInfo alloc] init];
+    DBTOpenLibraryBook *info=[[DBTOpenLibraryBook alloc] init];
     
     [info setTitle:[dict objectForKey:@"title"]];
     [info setSubtitle:[dict objectForKey:@"subtitle"]];
@@ -123,12 +123,12 @@
     
     NSArray *array=[dict objectForKey:@"publishers"];
     if (array)
-        [info setPublishers:[DBTOpenLibraryBookInfo arrayByFlattening:array
+        [info setPublishers:[DBTOpenLibraryBook arrayByFlattening:array
                                                              usingKey:@"name"]];
     
     array=[dict objectForKey:@"authors"];
     if (array)
-        [info setAuthors:[DBTOpenLibraryBookInfo arrayByFlattening:array
+        [info setAuthors:[DBTOpenLibraryBook arrayByFlattening:array
                                                           usingKey:@"name"]];
     return [info autorelease];
 }
