@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F693FDDB179BB8A80024B26E /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F693FDDA179BB8A80024B26E /* NSString+Utils.m */; };
 		F693FDDE179BC5C30024B26E /* DBTOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F693FDDD179BC5C30024B26E /* DBTOfferCell.m */; };
+		F693FDE0179BF6930024B26E /* libisimulate-4.x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F693FDDF179BF6930024B26E /* libisimulate-4.x.a */; };
 		F69ED84A179AAFD700C73DCC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED849179AAFD700C73DCC /* FacebookSDK.framework */; };
 		F69ED84C179AB0FE00C73DCC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED84B179AB0FE00C73DCC /* AdSupport.framework */; };
 		F69ED84E179AB10700C73DCC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED84D179AB10700C73DCC /* Accounts.framework */; };
@@ -62,6 +63,7 @@
 		F693FDDA179BB8A80024B26E /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		F693FDDC179BC5C30024B26E /* DBTOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTOfferCell.h; sourceTree = "<group>"; };
 		F693FDDD179BC5C30024B26E /* DBTOfferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTOfferCell.m; sourceTree = "<group>"; };
+		F693FDDF179BF6930024B26E /* libisimulate-4.x.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libisimulate-4.x.a"; sourceTree = "<group>"; };
 		F69ED849179AAFD700C73DCC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		F69ED84B179AB0FE00C73DCC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F69ED84D179AB10700C73DCC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -171,6 +173,7 @@
 				F6C5EAEF179AA1340048E52A /* CoreGraphics.framework in Frameworks */,
 				F69ED84A179AAFD700C73DCC /* FacebookSDK.framework in Frameworks */,
 				F69ED89B179ABB5300C73DCC /* libzbar.a in Frameworks */,
+				F693FDE0179BF6930024B26E /* libisimulate-4.x.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +280,7 @@
 		F6C5EAE9179AA1340048E52A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F693FDDF179BF6930024B26E /* libisimulate-4.x.a */,
 				F6FDE04A179B27EF006498D0 /* MapKit.framework */,
 				F69ED8A8179ABB8D00C73DCC /* libiconv.dylib */,
 				F6FDE047179B27B3006498D0 /* CoreLocation.framework */,
@@ -554,6 +558,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -573,6 +578,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ZBarSDK\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

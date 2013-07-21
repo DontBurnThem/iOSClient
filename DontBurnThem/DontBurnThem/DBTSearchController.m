@@ -73,6 +73,14 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.foundOffers.count==0) {
+        [self.isbnField becomeFirstResponder];
+    }
+}
+
 - (void)runSearchInternal
 {
     NSArray *results=[[DBTServer server] lookForOffersHere:self.map.userLocation.location.coordinate
@@ -139,12 +147,6 @@
                         
         }
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self.pages relayoutSubviews];
-    [super viewDidAppear:animated];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

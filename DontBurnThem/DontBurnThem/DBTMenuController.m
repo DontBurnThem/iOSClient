@@ -9,6 +9,7 @@
 #import "DBTMenuController.h"
 #import "DBTOpenLibraryBook.h"
 #import "DBTOfferController.h"
+#import "DBTSearchController.h"
 #import "DBTOffer.h"
 
 @interface DBTMenuController ()
@@ -25,7 +26,7 @@
     }
     return self;
 }
-/*
+
 - (void)readerView:(ZBarReaderView *)readerView didReadSymbols:(ZBarSymbolSet *)symbols fromImage:(UIImage *)image
 {
     for (ZBarSymbol *symbol in symbols) {
@@ -33,18 +34,9 @@
         // take the code
         NSString *isbn=[symbol data];
         
-        isbn=@"0201558025";
+        self.scannedBook=[DBTOpenLibraryBook fetchBookWithISBN:isbn];
         
-        self.scannedBook=[DBTOpenLibraryBook bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBook requestForISBN:isbn]
-                                                                                            returningResponse:NULL
-                                                                                                        error:NULL]
-                                                                error:NULL];
-        
-        if (self.scannedBook) {
-            [self.barcodeScanner dismissViewControllerAnimated:YES completion:^{
-                [self performSegueWithIdentifier:@"BookDetails" sender:self];
-            }];
-        } else {
+        if (!self.scannedBook) {
             UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Failure"
                                                        message:@"Unable to get book details."
                                                       delegate:nil
@@ -52,11 +44,14 @@
                                              otherButtonTitles: nil];
             
             [[av autorelease] show];
+        } else {
+            [self performSegueWithIdentifier:@"BookDetails" sender:self];
         }
+
         
         return;
     }
-}*/
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -68,8 +63,7 @@
 
 - (void)openScanner:(id)sender
 {
-#warning edit this
-#if false
+#ifndef BYPASS_SCANNER
     if (!self.barcodeScanner) {
         self.barcodeScanner=[[ZBarReaderViewController new] autorelease];
         [self.barcodeScanner setShowsZBarControls:YES];
@@ -80,10 +74,13 @@
                        animated:YES
                      completion:NULL];
 #else
-    // take the code
-    NSString *isbn=@"1558600868";
     
-    self.scannedBook=[DBTOpenLibraryBook fetchBookWithISBN:isbn];
+    NSArray *validISBNs=@[@"9780345015501",@"3540406743",@"0262031418",@"3540573321"];
+    static NSUInteger pickOne=0;
+    pickOne++;
+    pickOne=pickOne%validISBNs.count;
+    
+    self.scannedBook=[DBTOpenLibraryBook fetchBookWithISBN:[validISBNs objectAtIndex:pickOne]];
     
     if (!self.scannedBook) {
         UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Failure"
@@ -96,7 +93,7 @@
     } else {
         [self performSegueWithIdentifier:@"BookDetails" sender:self];
     }
-
+    
 #endif
 }
 

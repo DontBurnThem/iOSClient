@@ -8,6 +8,12 @@
 
 #import "DBTPagedScrollView.h"
 
+@interface DBTPagedScrollView () {
+    CGFloat scrollingW;
+    BOOL alreadyLayout;
+}
+@end
+
 @implementation DBTPagedScrollView
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -30,29 +36,41 @@
 {
     UIPageControl *pageControl=(UIPageControl *)sender;
     
-    CGSize size=self.bounds.size;
-    CGRect frame=CGRectMake(size.width*pageControl.currentPage,
+    CGRect frame=CGRectMake(scrollingW*pageControl.currentPage,
                             0.,
-                            size.width,
-                            size.height);
+                            scrollingW,
+                            self.frame.size.height);
     
     [self scrollRectToVisible:frame animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat pageWidth=self.frame.size.width;
-    NSUInteger page=floor((self.contentOffset.x-pageWidth/2)/pageWidth) + 1;
+    NSUInteger page=floor((self.contentOffset.x-scrollingW/2)/scrollingW) + 1;
     self.pageControl.currentPage=page;
+}
+
+- (void)layoutSubviews
+{
+    [self relayoutSubviews];
+    [super layoutSubviews];
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    alreadyLayout=NO;
 }
 
 - (void)relayoutSubviews
 {
-    static BOOL neverDoThis=NO;
-    if (neverDoThis) {
+    if (self.bounds.size.width==0. || self.bounds.size.height==0.)
         return;
-    }
-    neverDoThis=YES;
+    
+    if (alreadyLayout) return;
+    
+    alreadyLayout=YES;
+    
     
     NSArray *views=self.subviews;
     
@@ -61,6 +79,8 @@
     }
     
     CGFloat w=self.bounds.size.width;
+    scrollingW=w;
+    
     NSUInteger count=views.count;
     
     [self setContentSize:CGSizeMake(w*count, self.bounds.size.height)];
@@ -100,6 +120,8 @@
                                        constant:0]];
     }
     [self.pageControl setNumberOfPages:self.subviews.count];
+    
+    [dict release];
 }
 
 - (void)dealloc

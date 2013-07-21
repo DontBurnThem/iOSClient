@@ -43,7 +43,6 @@
 
 - (NSString *)userRef
 {
-#warning change this
     return [NSString stringWithFormat:@"%@/api/users/1/", [DBTServer address]];
 }
 
