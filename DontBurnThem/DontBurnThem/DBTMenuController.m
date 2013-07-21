@@ -33,8 +33,13 @@
         
         // take the code
         NSString *isbn=[symbol data];
+ 
         
         self.scannedBook=[DBTOpenLibraryBook fetchBookWithISBN:isbn];
+        
+        if (!self.scannedBook && isbn.length>10) {
+            self.scannedBook=[DBTOpenLibraryBook fetchBookWithISBN:[isbn substringFromIndex:3]];
+        }
         
         if (!self.scannedBook) {
             UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Failure"
@@ -45,7 +50,10 @@
             
             [[av autorelease] show];
         } else {
-            [self performSegueWithIdentifier:@"BookDetails" sender:self];
+            [self.barcodeScanner dismissViewControllerAnimated:YES
+                                                    completion:^{
+                                                        [self performSegueWithIdentifier:@"BookDetails" sender:self];
+                                                    }];
         }
 
         
