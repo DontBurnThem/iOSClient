@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F693FDDB179BB8A80024B26E /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F693FDDA179BB8A80024B26E /* NSString+Utils.m */; };
+		F693FDDE179BC5C30024B26E /* DBTOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F693FDDD179BC5C30024B26E /* DBTOfferCell.m */; };
 		F69ED84A179AAFD700C73DCC /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED849179AAFD700C73DCC /* FacebookSDK.framework */; };
 		F69ED84C179AB0FE00C73DCC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED84B179AB0FE00C73DCC /* AdSupport.framework */; };
 		F69ED84E179AB10700C73DCC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F69ED84D179AB10700C73DCC /* Accounts.framework */; };
@@ -56,6 +58,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F693FDD9179BB8A80024B26E /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		F693FDDA179BB8A80024B26E /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		F693FDDC179BC5C30024B26E /* DBTOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTOfferCell.h; sourceTree = "<group>"; };
+		F693FDDD179BC5C30024B26E /* DBTOfferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTOfferCell.m; sourceTree = "<group>"; };
 		F69ED849179AAFD700C73DCC /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		F69ED84B179AB0FE00C73DCC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F69ED84D179AB10700C73DCC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -326,6 +332,8 @@
 				F6C5EB00179AA1340048E52A /* Default-568h@2x.png */,
 				F6F9CC4D179BA13F004A492A /* NSDictionary+Utils.h */,
 				F6F9CC4E179BA13F004A492A /* NSDictionary+Utils.m */,
+				F693FDD9179BB8A80024B26E /* NSString+Utils.h */,
+				F693FDDA179BB8A80024B26E /* NSString+Utils.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -355,6 +363,8 @@
 				F6FDE04D179B2A9C006498D0 /* DBTButtonCell.m */,
 				F6FDE057179B4CCA006498D0 /* DBTTextCell.h */,
 				F6FDE058179B4CCA006498D0 /* DBTTextCell.m */,
+				F693FDDC179BC5C30024B26E /* DBTOfferCell.h */,
+				F693FDDD179BC5C30024B26E /* DBTOfferCell.m */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -450,6 +460,8 @@
 				F6F9CC49179B752B004A492A /* DBTPagedScrollView.m in Sources */,
 				F6F9CC4C179B9B0F004A492A /* DBTSearchController.m in Sources */,
 				F6F9CC4F179BA13F004A492A /* NSDictionary+Utils.m in Sources */,
+				F693FDDB179BB8A80024B26E /* NSString+Utils.m in Sources */,
+				F693FDDE179BC5C30024B26E /* DBTOfferCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

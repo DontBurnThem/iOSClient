@@ -29,26 +29,17 @@
 
 - (void)setupPrivateVariables
 {
-    _bookStates=[@[@"Mint",
-                 @"Open",
-                 @"Used",
-                 @"Written",
-                 @"Damaged",
-                 @"Missing pages"
-                 ] retain];
-    
     bookStatesActionSheet=[[UIActionSheet alloc] initWithTitle:@"State of the book"
                                                       delegate:self
                                              cancelButtonTitle:nil
                                         destructiveButtonTitle:nil
                                              otherButtonTitles:nil];
-    for (NSString *str in _bookStates)
+    for (NSString *str in [DBTOffer bookStates])
          [bookStatesActionSheet addButtonWithTitle:str];
 }
 
 - (void)dealloc
 {
-    [_bookStates release];
     self.stateCell=nil;
     self.mapCell=nil;
     self.priceCell=nil;
@@ -156,7 +147,7 @@
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"ComboCell"
                                                              andClass:[UITableViewCell class]];
                     self.stateCell=cell;
-                    [cell.detailTextLabel setText:[self.bookStates objectAtIndex:self.state]];
+                    [cell.detailTextLabel setText:[[DBTOffer bookStates] objectAtIndex:self.state]];
                     break;
                 case 1:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"PriceCell"
@@ -236,7 +227,7 @@
 {
     // set the value
     _state=buttonIndex;
-    [self.stateCell.detailTextLabel setText:[self.bookStates objectAtIndex:buttonIndex]];
+    [self.stateCell.detailTextLabel setText:[[DBTOffer bookStates] objectAtIndex:buttonIndex]];
 }
 
 - (void)buttonCellWasClicked:(DBTButtonCell *)cell
@@ -254,11 +245,11 @@
                 [cell setEnabled:YES];
                 
                 if (!result) {
-                    UIAlertView *av=[[[UIAlertView alloc] initWithTitle:@"Error"
-                                                                message:[err localizedDescription]
+                    UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:(err ? [err localizedDescription] : @"{missing}")
                                                                delegate:nil
                                                       cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil] autorelease];
+                                                      otherButtonTitles:nil];
                     
                     [av show];
                 } else {

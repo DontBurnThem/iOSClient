@@ -7,18 +7,97 @@
 //
 
 #import "DBTSearchController.h"
+#import "DBTOffer.h"
+#import "DBTOpenLibraryBook.h"
+#import "DBTServer.h"
+#import "DBTOfferCell.h"
 
 #define ANIMATON_DELTA 104.
 
 @interface DBTSearchController ()
 
+- (void)runSearchInternal;
+- (void)filterOffers;
 @end
 
 @implementation DBTSearchController
 
+
+- (void)runSearch
+{
+    [self performSelectorInBackground:@selector(runSearchInternal) withObject:nil];
+}
+
+- (void)filterOffers
+{
+    NSMutableArray *offers=[NSMutableArray arrayWithArray:self.foundOffers];
+    
+    NSString *authorQuery=[self.authorField.text lowercaseStringAndRemoveWhitespace];
+    NSString *titleQuery=[self.titleField.text lowercaseStringAndRemoveWhitespace];
+    
+    for (NSUInteger i=0; i<offers.count; ++i) {
+        
+        DBTOffer *offer=[offers objectAtIndex:i];
+        
+        [offer setBook:[DBTOpenLibraryBook fetchBookWithISBN:[offer isbnFromBookRef]]];
+        
+        // check if matches
+        if (!offer.book) continue;
+        
+        BOOL matches=YES;
+        
+        if (authorQuery.length>0) {
+            NSString *haystack=[[offer.book.authors componentsJoinedByString:@","] lowercaseStringAndRemoveWhitespace];
+            
+            if ([haystack rangeOfString:authorQuery].length==0)
+                matches=NO;
+        }
+        
+        if (titleQuery.length>0) {
+            NSString *haystack=[[offer.book.title stringByAppendingFormat:@",%@", offer.book.subtitle] lowercaseStringAndRemoveWhitespace];
+            
+            if ([haystack rangeOfString:titleQuery].length==0)
+                matches=NO;
+        }
+        
+        if (matches) continue;
+        
+        // otherwise, remove
+        [offers removeObjectAtIndex:i];
+        --i;
+    }
+    
+    [self performSelectorOnMainThread:@selector(setFoundOffers:) withObject:offers waitUntilDone:NO];
+    
+}
+
+- (void)runSearchInternal
+{
+    NSArray *results=[[DBTServer server] lookForOffersHere:self.map.userLocation.location.coordinate
+                                                    radius:25.
+                                              optionalISBN:(self.isbnField.text.length>0 ? self.isbnField.text : nil)
+                                                     error:NULL];
+    [self performSelectorOnMainThread:@selector(setFoundOffers:) withObject:results waitUntilDone:NO];
+    
+    if (self.authorField.text.length>0 || self.titleField.text.length>0)
+        [self performSelectorInBackground:@selector(filterOffers)
+                               withObject:nil];
+}
+
 - (void)toggleParameters:(id)sender
 {
     self.resultsFullScreen=!self.resultsFullScreen;
+}
+
+- (void)setFoundOffers:(NSArray *)foundOffers
+{
+    [_foundOffers autorelease];
+    _foundOffers=[foundOffers retain];
+    
+    // place overlays
+    [self.map removeAnnotations:self.map.annotations];
+    [self.map addAnnotations:foundOffers];
+    [self.tableView reloadData];
 }
 
 - (void)setResultsFullScreen:(BOOL)resultsFullScreen
@@ -43,7 +122,10 @@
                 [self.label1 setAlpha:1.];
                 [self.label2 setAlpha:1.];
                 
+                
+            } completion:^(BOOL finished) {
                 [self.parameters setHighlighted:NO];
+                [self runSearch];
             }];
             
         } else {
@@ -63,11 +145,42 @@
                 [self.label1 setAlpha:0.];
                 [self.label2 setAlpha:0.];
                 
+                
+            } completion:^(BOOL finished) {
                 [self.parameters setHighlighted:YES];
             }];
                         
         }
     }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.foundOffers.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell=[tableView dequeueOrCreateCellWithIdentifier:@"OfferCell" andClass:[DBTOfferCell class]];
+    
+    [(DBTOfferCell *)cell loadOffer:[self.foundOffers objectAtIndex:indexPath.row] fromLocation:self.map.userLocation.location];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return nil;
 }
 
 @end

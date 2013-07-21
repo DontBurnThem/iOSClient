@@ -8,6 +8,7 @@
 
 #import "DBTOffer.h"
 #import "DBTServer.h"
+#import "DBTOpenLibraryBook.h"
 
 @implementation DBTOffer
 + (DBTOffer *)offerWithBook:(DBTOpenLibraryBook *)book withPrice:(CGFloat)price andState:(NSUInteger)state
@@ -27,6 +28,22 @@
     return self;
 }
 
+- (NSString *)isbnFromBookRef
+{
+    return [[NSURL URLWithString:self.bookRef] lastPathComponent];
+}
+
++ (NSArray *)bookStates
+{
+    return @[@"Mint",
+             @"Open",
+             @"Used",
+             @"Written",
+             @"Damaged",
+             @"Missing pages"
+             ];
+}
+
 - (void)pushAsynchronouslyToServer:(void (^)(BOOL, NSError *))cbk
 {
     dispatch_async(dispatch_get_global_queue(
@@ -37,6 +54,24 @@
                        
                        cbk(result, err);
                    });
+}
+
+- (CLLocationCoordinate2D)coordinate
+{
+    return self.location;
+}
+
+- (NSString *)title
+{
+    if (self.book) return self.book.title;
+    if (self.bookRef) return [self isbnFromBookRef];
+    
+    return [NSString stringWithFormat:@"%0.2f", self.price];
+}
+
+- (NSString *)subtitle
+{
+    return [NSString stringWithFormat:@"%0.2f, %@", self.price, [[DBTOffer bookStates] objectAtIndex:self.state]];
 }
 
 - (BOOL)pushSynchronouslyToServerError:(NSError **)err

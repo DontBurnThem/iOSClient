@@ -117,7 +117,33 @@
     
     if (!result) return nil;
     
-    // now parse results
+    NSArray *list=[NSJSONSerialization JSONObjectWithData:result options:0 error:err];
+    
+    if (!list) return nil;
+    
+    // now parse results.
+    NSMutableArray *offers=[[NSMutableArray alloc] initWithCapacity:list.count];
+    
+    for (NSDictionary *dict in list) {
+        DBTOffer *offer=[[DBTOffer alloc] init];
+        
+        @try {
+            offer.price=[(NSNumber *)[dict valueForKey:@"price"] floatValue];
+            offer.state=[(NSNumber *)[dict valueForKey:@"status"] integerValue];
+            offer.userRef=[dict valueForKey:@"user"];
+            CLLocationCoordinate2D coords;
+            coords.latitude=[(NSNumber *)[dict valueForKey:@"lat"] floatValue];
+            coords.longitude=[(NSNumber *)[dict valueForKey:@"lon"] floatValue];
+            offer.bookRef=[dict valueForKey:@"book"];
+            
+            [offers addObject:[offer autorelease]];
+                    }
+        @catch (NSException *exception) {
+            NSLog(@"Invalid format returned from DontBurnThem server.");
+        }
+    }
+    
+    return offers;
 }
 
 - (BOOL)containsBook:(DBTOpenLibraryBook *)book error:(NSError **)err

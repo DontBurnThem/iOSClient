@@ -9,13 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "DBTPagedScrollView.h"
 
-@interface DBTSearchController : UIViewController
+@interface DBTSearchController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, retain) IBOutlet UILabel *label1;
 @property (nonatomic, retain) IBOutlet UILabel *label2;
 @property (nonatomic, retain) IBOutlet UIButton *parameters;
+@property (nonatomic, retain) IBOutlet UITextField *authorField;
+@property (nonatomic, retain) IBOutlet UITextField *isbnField;
+@property (nonatomic, retain) IBOutlet UITextField *titleField;
 @property (nonatomic, retain) IBOutlet DBTPagedScrollView *pages;
+@property (nonatomic, retain) IBOutlet MKMapView *map;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign, getter=areResultsFullScreen) BOOL resultsFullScreen;
 
-- (IBAction)toggleParameters:(id)sender;
+@property (nonatomic, retain) NSArray *foundOffers;
 
+- (IBAction)toggleParameters:(id)sender;
+- (void)runSearch;
 @end

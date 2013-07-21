@@ -122,9 +122,23 @@
     
     NSDictionary *identifiers=[dict objectForKey:@"identifiers"];
     if (identifiers) {
-        [info setISBN:[identifiers objectForKey:@"isbn_13"]];
-        if (!info.ISBN)
-            [info setISBN:[identifiers objectForKey:@"isbn_10"]];
+        id isbn=nil;
+        isbn=[identifiers objectForKey:@"isbn_13"];
+        if (!isbn)
+            isbn=[identifiers objectForKey:@"isbn_10"];
+        
+        if ([isbn isKindOfClass:[NSArray class]])
+            isbn=[isbn objectAtIndex:0];
+        
+        if ([isbn isKindOfClass:[NSNumber class]])
+            isbn=[(NSNumber *)isbn stringValue];
+        if (![isbn isKindOfClass:[NSString class]]) {
+            [info release];
+            NSLog(@"No isbn found!");
+            return nil;
+        }
+        
+        [info setISBN:isbn];
     }
     
     NSString *thumb=[dict objectForKey:@"thumbnail_url"];
