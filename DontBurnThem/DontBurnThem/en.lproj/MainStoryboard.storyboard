@@ -257,7 +257,6 @@
                             <outlet property="delegate" destination="yyA-QE-azL" id="fdh-dM-FDg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="84y-ht-QS7"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpy-SY-QnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -268,42 +267,6 @@
         <image name="EmptyImage.png" width="480" height="428"/>
         <image name="Logo.png" width="320" height="201"/>
     </resources>
-    <classes>
-        <class className="DBTButtonCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTButtonCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-        <class className="DBTImageCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTImageCell.h"/>
-        </class>
-        <class className="DBTMakeOfferController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTMakeOfferController.h"/>
-        </class>
-        <class className="DBTMapCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTMapCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="DBTMenuController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTMenuController.h"/>
-            <relationships>
-                <relationship kind="action" name="openScanner:"/>
-                <relationship kind="outlet" name="scanButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="DBTTextCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DBTTextCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

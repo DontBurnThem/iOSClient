@@ -79,7 +79,7 @@
                      completion:NULL];
 #else
     // take the code
-    NSString *isbn=@"0201558025";
+    NSString *isbn=@"1558600868";
     
     self.scannedBook=[DBTOpenLibraryBook bookInfoWithJSONData:[NSURLConnection sendSynchronousRequest:[DBTOpenLibraryBook requestForISBN:isbn]
                                                                                         returningResponse:NULL

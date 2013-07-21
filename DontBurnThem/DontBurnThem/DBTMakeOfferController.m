@@ -250,7 +250,21 @@
         
         case 5:
             [cell setEnabled:NO];
-            
+            [[self makeAnOffer] pushAsynchronouslyToServer:^(BOOL result, NSError *err) {
+                [cell setEnabled:YES];
+                
+                if (!result) {
+                    UIAlertView *av=[[[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:[err localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil] autorelease];
+                    
+                    [av show];
+                } else {
+                    [self dismiss];
+                }
+            }];
             break;
              
         default:
