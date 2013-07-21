@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Pietro Saccardi. All rights reserved.
 //
 
-#import "DBTMakeOfferController.h"
+#import "DBTOfferController.h"
 #import "DBTOpenLibraryBook.h"
 #import "DBTMapCell.h"
 #import "DBTOffer.h"
@@ -14,18 +14,17 @@
 #import "DBTButtonCell.h"
 #import "DBTTextCell.h"
 
-@interface DBTMakeOfferController () {
+@interface DBTOfferController () {
     UIActionSheet *bookStatesActionSheet;
+    CLLocationCoordinate2D _location;
 }
 @property (nonatomic, retain) UITableViewCell *stateCell;
 @property (nonatomic, retain) DBTMapCell *mapCell;
 @property (nonatomic, retain) DBTTextCell *priceCell;
 - (void)setupPrivateVariables;
-
-- (DBTOffer *)makeAnOffer;
 @end
 
-@implementation DBTMakeOfferController
+@implementation DBTOfferController
 
 - (void)setupPrivateVariables
 {
@@ -36,6 +35,16 @@
                                              otherButtonTitles:nil];
     for (NSString *str in [DBTOffer bookStates])
          [bookStatesActionSheet addButtonWithTitle:str];
+    
+    _offer=[[DBTOffer alloc] init];
+}
+
+- (void)setOffer:(DBTOffer *)offer
+{
+    [_offer autorelease];
+    _offer=[offer retain];
+    
+    [self.tableView reloadData];
 }
 
 - (void)dealloc
@@ -62,6 +71,14 @@
         [self setupPrivateVariables];
     }
     return self;
+}
+
+- (void)setReadOnly:(BOOL)readOnly
+{
+    if (_readOnly==readOnly) return;
+    
+    _readOnly=readOnly;
+    [self.tableView reloadData];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -109,14 +126,14 @@
                 case 0:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"TitleCell"
                                                              andClass:[UITableViewCell class]];
-                    [cell.textLabel setText:self.book.title];
-                    [cell.detailTextLabel setText:self.book.subtitle];
+                    [cell.textLabel setText:self.offer.book.title];
+                    [cell.detailTextLabel setText:self.offer.book.subtitle];
                     break;
                     
                 case 1:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"ImageCell"
                                                              andClass:[DBTImageCell class]];
-                    [(DBTImageCell *)cell setImageURL:self.book.imageURL];
+                    [(DBTImageCell *)cell setImageURL:self.offer.book.imageURL];
                     
                 default:
                     break;
@@ -127,34 +144,39 @@
             
             cell=[tableView dequeueOrCreateCellWithIdentifier:@"TextCell"
                                                      andClass:[UITableViewCell class]];
-            [cell.textLabel setText:[self.book.authors objectAtIndex:indexPath.row]];
+            [cell.textLabel setText:[self.offer.book.authors objectAtIndex:indexPath.row]];
             break;
             
         case 2:
             cell=[tableView dequeueOrCreateCellWithIdentifier:@"TextCell"
                                                      andClass:[UITableViewCell class]];
-            [cell.textLabel setText:[self.book.publishers objectAtIndex:indexPath.row]];
+            [cell.textLabel setText:[self.offer.book.publishers objectAtIndex:indexPath.row]];
             
             break;
         case 3:
             cell=[tableView dequeueOrCreateCellWithIdentifier:@"MapCell"
                                                      andClass:[DBTMapCell class]];
             self.mapCell=(DBTMapCell *)cell;
+            [self.mapCell.mapView removeAnnotations:self.mapCell.mapView.annotations];
+            if ([self isReadOnly])
+                [self.mapCell.mapView addAnnotation:self.offer];
             break;
         case 4:
             switch (indexPath.row) {
                 case 0:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"ComboCell"
-                                                             andClass:[UITableViewCell class]];
+                                                             andClass:[DBTButtonCell class]];
                     self.stateCell=cell;
-                    [cell.detailTextLabel setText:[[DBTOffer bookStates] objectAtIndex:self.state]];
+                    [(DBTButtonCell *)cell setUserInteractionEnabled:![self isReadOnly]];
+                    [cell.detailTextLabel setText:[[DBTOffer bookStates] objectAtIndex:self.offer.state]];
                     break;
                 case 1:
                     cell=[tableView dequeueOrCreateCellWithIdentifier:@"PriceCell"
                                                              andClass:[DBTTextCell class]];
                     self.priceCell=(DBTTextCell *)cell;
                     [[(DBTTextCell *)cell textField] setDelegate:self];
-                    [[(DBTTextCell *)cell textField] setText:[NSString stringWithFormat:@"%0.2f", self.price]];
+                    [self.priceCell.textField setEnabled:![self isReadOnly]];
+                    [[(DBTTextCell *)cell textField] setText:[NSString stringWithFormat:@"%0.2f", self.offer.price]];
                     
                 default:
                     break;
@@ -162,9 +184,23 @@
             
             break;
         case 5:
-            cell=[tableView dequeueOrCreateCellWithIdentifier:@"ButtonCell"
-                                                     andClass:[DBTButtonCell class]];
-            [cell.textLabel setText:@"Sell"];
+            switch (indexPath.row) {
+                case 0:
+                    cell=[tableView dequeueOrCreateCellWithIdentifier:@"ButtonCell"
+                                                             andClass:[DBTButtonCell class]];
+                    [cell.textLabel setText:([self isReadOnly] ? @"Close" : @"Sell")];
+
+                    break;
+                    
+                case 1:
+                    cell=[tableView dequeueOrCreateCellWithIdentifier:@"ButtonCell"
+                                                             andClass:[DBTButtonCell class]];
+                    [cell.textLabel setText:@"Close"];
+                    break;
+                    
+                default:
+                    break;
+            }
             break;
             
         default:
@@ -174,26 +210,15 @@
     return cell;
 }
 
-- (CLLocationCoordinate2D)location
-{
-    return self.mapCell.mapView.userLocation.location.coordinate;
-}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [[NSScanner scannerWithString:[textField text]] scanFloat:&_price];
+    CGFloat price;
+    [[NSScanner scannerWithString:[textField text]] scanFloat:&price];
+    
+    self.offer.price=price;
 }
 
-- (DBTOffer *)makeAnOffer
-{
-    DBTOffer *offer=[DBTOffer offerWithBook:self.book
-                                  withPrice:self.price
-                                   andState:self.state];
-    
-    offer.location=self.location;
-    
-    return offer;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -207,15 +232,15 @@
         case 0:
             return 2;
         case 1:
-            return self.book.authors.count;
+            return self.offer.book.authors.count;
         case 2:
-            return self.book.publishers.count;
+            return self.offer.book.publishers.count;
         case 3:
             return 1;
         case 4:
             return 2;
         case 5:
-            return 1;
+            return ([self isReadOnly] ? 1 : 2);
             
         default:
             return 0;
@@ -226,8 +251,14 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     // set the value
-    _state=buttonIndex;
+    self.offer.state=buttonIndex;
     [self.stateCell.detailTextLabel setText:[[DBTOffer bookStates] objectAtIndex:buttonIndex]];
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    if (![self isReadOnly])
+        [self.offer setLocation:userLocation.coordinate];
 }
 
 - (void)buttonCellWasClicked:(DBTButtonCell *)cell
@@ -240,22 +271,21 @@
             break;
         
         case 5:
-            [cell setEnabled:NO];
-            [[self makeAnOffer] pushAsynchronouslyToServer:^(BOOL result, NSError *err) {
-                [cell setEnabled:YES];
+            if ([self isReadOnly] || [self.tableView indexPathForCell:cell].row==1) {
+                [self dismiss];
+            } else {
                 
-                if (!result) {
-                    UIAlertView *av=[[UIAlertView alloc] initWithTitle:@"Error"
-                                                                message:(err ? [err localizedDescription] : @"{missing}")
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
+                [cell setEnabled:NO];
+                [[self offer] pushAsynchronouslyToServer:^(BOOL result, NSError *err) {
+                    [cell setEnabled:YES];
                     
-                    [av show];
-                } else {
-                    [self dismiss];
-                }
-            }];
+                    if (!result) {
+                        NSLog(@"Failure!!");
+                    } else {
+                        [self dismiss];
+                    }
+                }];
+            }
             break;
              
         default:
@@ -289,12 +319,5 @@
     }
 }
 
-- (void)setBook:(DBTOpenLibraryBook *)book
-{
-    [_book autorelease];
-    _book=[book retain];
-    
-    [self.tableView reloadData];
-}
 
 @end

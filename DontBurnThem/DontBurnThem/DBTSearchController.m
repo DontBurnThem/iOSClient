@@ -11,13 +11,12 @@
 #import "DBTOpenLibraryBook.h"
 #import "DBTServer.h"
 #import "DBTOfferCell.h"
-
-#define ANIMATON_DELTA 104.
+#import "DBTOfferController.h"
 
 @interface DBTSearchController ()
 
 - (void)runSearchInternal;
-- (void)filterOffers;
+- (void)filterOffers:(NSArray *)off;
 @end
 
 @implementation DBTSearchController
@@ -25,12 +24,15 @@
 
 - (void)runSearch
 {
+    [self.authorField endEditing:YES];
+    [self.titleField endEditing:YES];
+    [self.isbnField endEditing:YES];
     [self performSelectorInBackground:@selector(runSearchInternal) withObject:nil];
 }
 
-- (void)filterOffers
+- (void)filterOffers:(NSArray *)off
 {
-    NSMutableArray *offers=[NSMutableArray arrayWithArray:self.foundOffers];
+    NSMutableArray *offers=[NSMutableArray arrayWithArray:off];
     
     NSString *authorQuery=[self.authorField.text lowercaseStringAndRemoveWhitespace];
     NSString *titleQuery=[self.titleField.text lowercaseStringAndRemoveWhitespace];
@@ -79,9 +81,8 @@
                                                      error:NULL];
     [self performSelectorOnMainThread:@selector(setFoundOffers:) withObject:results waitUntilDone:NO];
     
-    if (self.authorField.text.length>0 || self.titleField.text.length>0)
-        [self performSelectorInBackground:@selector(filterOffers)
-                               withObject:nil];
+    [self performSelectorInBackground:@selector(filterOffers:)
+                           withObject:results];
 }
 
 - (void)toggleParameters:(id)sender
@@ -109,15 +110,8 @@
             
             [UIView animateWithDuration:0.2 animations:^{
                 
-                CGRect frame=self.pages.frame;
-                frame.size.height+=ANIMATON_DELTA;
-                frame.origin.y-=ANIMATON_DELTA;
-                
-                [self.pages setFrame:frame];
-                
-                frame=self.parameters.frame;
-                frame.origin.y-=ANIMATON_DELTA;
-                [self.parameters setFrame:frame];
+                [self.animationConstraint setConstant:26.];
+                [self.view layoutIfNeeded];
                 
                 [self.label1 setAlpha:1.];
                 [self.label2 setAlpha:1.];
@@ -132,16 +126,9 @@
             
             [UIView animateWithDuration:0.2 animations:^{
                 
-                CGRect frame=self.pages.frame;
-                frame.size.height-=ANIMATON_DELTA;
-                frame.origin.y+=ANIMATON_DELTA;
-                
-                [self.pages setFrame:frame];
-                
-                frame=self.parameters.frame;
-                frame.origin.y+=ANIMATON_DELTA;
-                [self.parameters setFrame:frame];
-                
+                [self.animationConstraint setConstant:133.];
+                [self.view layoutIfNeeded];
+
                 [self.label1 setAlpha:0.];
                 [self.label2 setAlpha:0.];
                 
@@ -152,6 +139,66 @@
                         
         }
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.pages relayoutSubviews];
+    [super viewDidAppear:animated];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"OfferDetails"]) {
+        [(DBTOfferController *)segue.destinationViewController setReadOnly:YES];
+        [(DBTOfferController *)segue.destinationViewController setOffer:self.selectedOffer];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    self.selectedOffer=(DBTOffer *)view.annotation;
+    [self showDetails];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[DBTOffer class]]) {
+        static NSString *reuseId = @"Default";
+        
+        MKPinAnnotationView *aView = (MKPinAnnotationView *)[mapView                                                          dequeueReusableAnnotationViewWithIdentifier:reuseId];
+        if (aView == nil)
+        {
+            aView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                     reuseIdentifier:reuseId] autorelease];
+            aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            aView.canShowCallout = YES;
+        }
+        
+        aView.annotation = annotation;
+        
+        return aView;
+    }
+    return nil;
+}
+
+- (void)showDetails
+{
+    [self performSegueWithIdentifier:@"OfferDetails" sender:self];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    self.selectedOffer=[self.foundOffers objectAtIndex:indexPath.row];
+    [self showDetails];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

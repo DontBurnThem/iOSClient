@@ -8,7 +8,8 @@
 
 #import "DBTMenuController.h"
 #import "DBTOpenLibraryBook.h"
-#import "DBTMakeOfferController.h"
+#import "DBTOfferController.h"
+#import "DBTOffer.h"
 
 @interface DBTMenuController ()
 
@@ -60,7 +61,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"BookDetails"]) {
-        [(DBTMakeOfferController *)segue.destinationViewController setBook:self.scannedBook];
+        [(DBTOfferController *)segue.destinationViewController setReadOnly:NO];
+        [[(DBTOfferController *)segue.destinationViewController offer] setBook:self.scannedBook];
     }
 }
 

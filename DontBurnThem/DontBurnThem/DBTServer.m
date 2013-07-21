@@ -134,6 +134,7 @@
             CLLocationCoordinate2D coords;
             coords.latitude=[(NSNumber *)[dict valueForKey:@"lat"] floatValue];
             coords.longitude=[(NSNumber *)[dict valueForKey:@"lon"] floatValue];
+            offer.location=coords;
             offer.bookRef=[dict valueForKey:@"book"];
             
             [offers addObject:[offer autorelease]];

@@ -11,4 +11,5 @@
 @interface DBTPagedScrollView : UIScrollView <UIScrollViewDelegate>
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
 - (IBAction)updatePage:(id)sender;
+- (void)relayoutSubviews;
 @end
