@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F68DB13717A2F5AD00697AC2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F68DB13617A2F5AD00697AC2 /* Icon.png */; };
+		F68DB13917A2F5B000697AC2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F68DB13817A2F5B000697AC2 /* Icon@2x.png */; };
 		F693FDDB179BB8A80024B26E /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F693FDDA179BB8A80024B26E /* NSString+Utils.m */; };
 		F693FDDE179BC5C30024B26E /* DBTOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F693FDDD179BC5C30024B26E /* DBTOfferCell.m */; };
 		F693FDE0179BF6930024B26E /* libisimulate-4.x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F693FDDF179BF6930024B26E /* libisimulate-4.x.a */; };
@@ -59,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F68DB13617A2F5AD00697AC2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		F68DB13817A2F5B000697AC2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		F693FDD9179BB8A80024B26E /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
 		F693FDDA179BB8A80024B26E /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
 		F693FDDC179BC5C30024B26E /* DBTOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTOfferCell.h; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		F69ED855179AB9D100C73DCC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F68DB13817A2F5B000697AC2 /* Icon@2x.png */,
+				F68DB13617A2F5AD00697AC2 /* Icon.png */,
 				F6FDE040179B2073006498D0 /* EmptyImage.png */,
 				F6FDE041179B2073006498D0 /* EmptyImage@2x.png */,
 				F69ED858179AB9E400C73DCC /* Logo@2x.png */,
@@ -438,6 +444,8 @@
 				F69ED89F179ABB5300C73DCC /* zbar-samples.png in Resources */,
 				F6FDE042179B2073006498D0 /* EmptyImage.png in Resources */,
 				F6FDE043179B2073006498D0 /* EmptyImage@2x.png in Resources */,
+				F68DB13717A2F5AD00697AC2 /* Icon.png in Resources */,
+				F68DB13917A2F5B000697AC2 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
